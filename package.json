@@ -1,5 +1,5 @@
 {
-  "name": "node-red-contrib-chatgpt",
+  "name": "node-red-contrib-simple-chatgpt",
   "version": "1.0.0",
   "description": "Node-REDでChatGPTができます。",
   "main": "node.js",
