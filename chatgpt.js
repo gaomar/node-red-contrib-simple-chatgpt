@@ -68,6 +68,7 @@ module.exports = (RED) => {
             }
         } else {
             try {
+                msg.topic = "completion";
                 const response = await openai.createCompletion({
                   model: "text-davinci-003",
                   prompt: msg.payload,
