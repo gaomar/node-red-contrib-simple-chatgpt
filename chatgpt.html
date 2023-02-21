@@ -1,0 +1,40 @@
+<script type="text/javascript">
+    RED.nodes.registerType('chatgpt',{
+        category: 'ChatGPT',
+        color: '#10A37F',
+        defaults: {
+            name: {value: ""},
+            Token: {value: "", required:true},
+            Organization: {value: "", required:true},
+        },
+        inputs:1,
+        outputs:1,
+        icon: "arrow-in.png",
+        label: function() {
+            return this.name||"chatgpt";
+        }
+    });
+ </script>
+ <script type="text/html" data-template-name="chatgpt">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-Token">
+            <i class="icon-tag"></i>
+            Token
+        </label>
+        <input type="text" id="node-input-Token" placeholder="session-token">
+    </div>
+    <div class="form-row">
+        <label for="node-input-Organization">
+            <i class="icon-tag"></i>
+            Organization
+        </label>
+        <input type="text" id="node-input-Organization" placeholder="organization">
+    </div>
+ </script>
+ <script type="text/html" data-help-name="chatgpt">
+    <p>ChatGPT</p>
+ </script>
