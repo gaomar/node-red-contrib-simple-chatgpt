@@ -14,7 +14,13 @@ Install with the built in <b>Node-RED Palette manager</b> or using npm:
 npm install node-red-contrib-chatgpt
 ```
 
-## Help
+## Setup
+
+When editing the nodes properties, to get your `Token` log in to [ChatGPT](https://chat.openai.com/chat) and then visit https://chat.openai.com/api/auth/session then copy and paste the "accessToken" into the nodes `Token` property value.
+
+To get your `Organization` visit https://platform.openai.com/account/org-settings then copy and paste the "OrganizationID" into the nodes `Organization` property value.
+
+## Usage
 
 ### Set `msg.topic` to a string with the value of `completion`, `image`, or `edit`.
 
