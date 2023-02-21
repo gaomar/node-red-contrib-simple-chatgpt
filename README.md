@@ -1,7 +1,7 @@
 [![platform](https://img.shields.io/badge/platform-Node--RED-red)](https://nodered.org)
 [![npm](https://img.shields.io/npm/v/node-red-contrib-primitive-status.svg)](https://www.npmjs.com/package/node-red-contrib-chatgpt)
 [![downloads](https://img.shields.io/npm/dt/node-red-contrib-primitive-status.svg)](https://www.npmjs.com/package/node-red-contrib-chatgpt)
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/HaroldPetersInskipp/node-red-contrib-/blob/main/LICENSE)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/blob/main/LICENSE)
 
 ## node-red-contrib-chatgpt
 
