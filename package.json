@@ -1,25 +1,37 @@
 {
   "name": "node-red-contrib-custom-chatgpt",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "ChatGPT in Node-RED",
   "main": "chatgpt.js",
-  "node-red": {
-    "nodes": {
-      "ChatGPT": "chatgpt.js"
-    }
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt.git"
   },
   "keywords": [
     "node-red",
     "chatgpt"
   ],
+  "node-red": {
+    "version": ">=1.3.5",
+    "nodes": {
+      "ChatGPT": "chatgpt.js"
+    }
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
   "author": {
         "name": "Harold Peters Inskipp",
         "email": "HaroldPetersInskipp@gmail.com"
     },
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/issues"
+  },
+  "homepage": "https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt#readme",
   "dependencies": {
     "openai": "^3.1.0"
   }
