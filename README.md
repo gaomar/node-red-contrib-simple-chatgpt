@@ -1,22 +1,11 @@
-## 概要
-payloadの文字列からChatGPTに問い合わせを行います。
-
-## インストール
+## Install
 
 ```
-npm i node-red-contrib-simple-chatgpt
+npm i node-red-contrib-chatgpt
 ```
-
-or
-
-AdminタブからInstall
 
 ## LINK
 
-* [NodeRED](https://flows.nodered.org/node/node-red-contrib-simple-chatgpt)
-* [Libraries.io](https://libraries.io/npm/node-red-contrib-simple-chatgpt)
-* [npm](https://www.npmjs.com/package/node-red-contrib-simple-chatgpt)
-
-## release
-
-* 2022/12/05: 初回リリース（v1.0.0）
+* [NodeRED](https://flows.nodered.org/node/node-red-contrib-chatgpt)
+* [Libraries.io](https://libraries.io/npm/node-red-contrib-chatgpt)
+* [npm](https://www.npmjs.com/package/node-red-contrib-chatgpt)
