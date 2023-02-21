@@ -36,5 +36,29 @@
     </div>
  </script>
  <script type="text/html" data-help-name="chatgpt">
-    <p>ChatGPT</p>
+    <h1>Description</h1>
+    <p>A Node-RED node that interacts with OpenAI machine learning models like <a href="https://chat.openai.com/chat">ChatGPT</a>.</p>
+    <h2>Setup</h2>
+    <p>When editing the nodes properties, to get your <code>Token</code> log in to <a href="https://chat.openai.com/chat">ChatGPT</a> then visit <a href="https://chat.openai.com/api/auth/session">https://chat.openai.com/api/auth/session</a> then copy and paste the "accessToken" into the nodes <code>Token</code> property value.</p>
+    <p>To get your <code>Organization</code> visit <a href="https://platform.openai.com/account/org-settings">https://platform.openai.com/account/org-settings</a> then copy and paste the "OrganizationID" into the nodes <code>Organization</code> property value.</p>
+    
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>msg.payload
+            <span class="property-type">string</span>
+        </dt>
+        <dd> The prompt to input into the model. </dd>
+        <dt class="optional">msg.topic
+            <span class="property-type">string</span>
+        </dt>
+        <dd> The topic and node behavior to select.</dd>
+    </dl>
+    <h3>Details</h3>
+    <p>Set <code>msg.topic</code> to a string with the value of <code>completion</code>, <code>image</code>, or <code>edit</code>.</p>
+    <p>1. If <code>msg.topic</code> is set to <code>completion</code>:</p>
+    <p><code>msg.payload</code> should be a well-written prompt that provides enough information for the model to know what you want and how it should respond. Its success generally depends on the complexity of the task and quality of your prompt. A good rule of thumb is to think about how you would write a word problem for a middle schooler to solve.</p>
+    <p>2. If <code>msg.topic</code> is set to <code>image</code>:</p>
+    <p><code>msg.payload</code> should be a prompt of text description of the desired image.</p>
+    <p>3. If <code>msg.topic</code> is set to <code>edit</code>:</p>
+    <p><code>msg.payload</code> should be a prompt of text to use as a starting point for the edit.</p>
  </script>
