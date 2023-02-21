@@ -11,7 +11,7 @@ A Node-RED node that interacts with OpenAI machine learning models like "ChatGPT
 
 Install with the built in <b>Node-RED Palette manager</b> or using npm:
 ```
-npm install node-red-contrib-chatgpt
+npm install node-red-contrib-custom-chatgpt
 ```
 
 ## Setup
@@ -42,9 +42,9 @@ None for now sorry, maybe submit a pull request with one.
 
 ## Links
 
-* [NodeRED](https://flows.nodered.org/node/node-red-contrib-chatgpt)
-* [Libraries.io](https://libraries.io/npm/node-red-contrib-chatgpt)
-* [npm](https://www.npmjs.com/package/node-red-contrib-chatgpt)
+* [NodeRED](https://flows.nodered.org/node/node-red-contrib-custom-chatgpt)
+* [Libraries.io](https://libraries.io/npm/node-red-contrib-custom-chatgpt)
+* [npm](https://www.npmjs.com/package/node-red-contrib-custom-chatgpt)
 
 ### Bugs reports and feature requests
 
