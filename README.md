@@ -3,7 +3,7 @@
 [![downloads](https://img.shields.io/npm/dt/node-red-contrib-custom-chatgpt.svg)](https://www.npmjs.com/package/node-red-contrib-custom-chatgpt)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/blob/main/LICENSE)
 
-## node-red-contrib-chatgpt
+## node-red-contrib-custom-chatgpt
 
 A Node-RED node that interacts with OpenAI machine learning models like "ChatGPT".
 
