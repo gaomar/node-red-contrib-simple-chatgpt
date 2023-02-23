@@ -3,12 +3,12 @@ module.exports = (RED) => {
   const main = function(config) {
       const node = this;
       RED.nodes.createNode(node, config);
-      const TOKEN = config.Token;
+      const API_KEY = config.API_KEY;
       const ORGANIZATION = config.Organization;
 
       const configuration = new Configuration({
         organization: ORGANIZATION,
-        apiKey: TOKEN,
+        apiKey: API_KEY,
       });
       const openai = new OpenAIApi(configuration);
 

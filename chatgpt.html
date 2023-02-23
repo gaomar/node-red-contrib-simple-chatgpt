@@ -4,7 +4,7 @@
         color: '#10A37F',
         defaults: {
             name: {value: ""},
-            Token: {value: "", required:true},
+            API_KEY: {value: "", required:true},
             Organization: {value: "", required:true},
         },
         inputs:1,
@@ -21,11 +21,11 @@
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
     <div class="form-row">
-        <label for="node-input-Token">
+        <label for="node-input-API_KEY">
             <i class="icon-tag"></i>
-            Token
+            API_KEY
         </label>
-        <input type="text" id="node-input-Token" placeholder="session-token">
+        <input type="text" id="node-input-API_KEY" placeholder="OPENAI_API_KEY">
     </div>
     <div class="form-row">
         <label for="node-input-Organization">
@@ -39,7 +39,7 @@
     <h1>Description</h1>
     <p>A Node-RED node that interacts with OpenAI machine learning models like <a href="https://chat.openai.com/chat">ChatGPT</a>.</p>
     <h2>Setup</h2>
-    <p>When editing the nodes properties, to get your <code>Token</code> log in to <a href="https://chat.openai.com/chat">ChatGPT</a> then visit <a href="https://chat.openai.com/api/auth/session">https://chat.openai.com/api/auth/session</a> then copy and paste the "accessToken" into the nodes <code>Token</code> property value.</p>
+    <p>When editing the nodes properties, to get your <code>OPENAI_API_KEY</code> log in to <a href="https://chat.openai.com/chat">ChatGPT</a> then visit <a href="https://platform.openai.com/account/api-keys">https://platform.openai.com/account/api-keys</a> click "+ Create new secret key" then copy and paste the "API key" into the nodes <code>API_KEY</code> property value.</p>
     <p>To get your <code>Organization</code> visit <a href="https://platform.openai.com/account/org-settings">https://platform.openai.com/account/org-settings</a> then copy and paste the "OrganizationID" into the nodes <code>Organization</code> property value.</p>
     
     <h3>Inputs</h3>
@@ -52,20 +52,37 @@
             <span class="property-type">string</span>
         </dt>
         <dd> The topic and node behavior to select.</dd>
+        <dt class="optional">msg.size
+            <span class="property-type">string</span>
+        </dt>
+        <dd> The desired image dimensions.</dd>
+        <dt class="optional">msg.format
+            <span class="property-type">string</span>
+        </dt>
+        <dd> The desired image output format.</dd>
+        <dt class="optional">msg.last
+            <span class="property-type">string</span>
+        </dt>
+        <dd> The input to be edited.</dd>
     </dl>
     <h3>Outputs</h3>
      <ol class="node-ports">
          <dl class="message-properties">
              <dt>msg.payload <span class="property-type">string</span></dt>
              <dd>The output of the selected model based on the input prompt.</dd>
+             <dt>msg.full <span class="property-type">object</span></dt>
+             <dd>The full response object of the selected model.</dd>
          </dl>
      </ol>
     <h3>Details</h3>
     <p>Set <code>msg.topic</code> to a string with the value of <code>completion</code>, <code>image</code>, or <code>edit</code>.</p>
     <p>1. If <code>msg.topic</code> is set to <code>completion</code>:</p>
-    <p><code>msg.payload</code> should be a well-written prompt that provides enough information for the model to know what you want and how it should respond. Its success generally depends on the complexity of the task and quality of your prompt. A good rule of thumb is to think about how you would write a word problem for a middle schooler to solve.</p>
+    <p>Required <code>msg.payload</code> should be a well-written prompt that provides enough information for the model to know what you want and how it should respond. Its success generally depends on the complexity of the task and quality of your prompt. A good rule of thumb is to think about how you would write a word problem for a middle schooler to solve.</p>
     <p>2. If <code>msg.topic</code> is set to <code>image</code>:</p>
-    <p><code>msg.payload</code> should be a prompt of text description of the desired image.</p>
+    <p>Required <code>msg.payload</code> should be a prompt of text description of the desired image.</p>
+    <p>Optional <code>msg.size</code> should be a string of the desired image dimensions. [Default:"256x256"]</p>
+    <p>Optional <code>msg.format</code> should be a string of either "b64_json" or "url". [Default:"b64_json"]</p>
     <p>3. If <code>msg.topic</code> is set to <code>edit</code>:</p>
-    <p><code>msg.payload</code> should be a prompt of text to use as a starting point for the edit.</p>
+    <p>Required <code>msg.payload</code> should be a prompt of text to use as a starting point for the edit.</p>
+    <p>Required <code>msg.last</code> should be a string of text to use as the input to be edited.</p>
  </script>

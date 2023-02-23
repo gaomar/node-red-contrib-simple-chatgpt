@@ -26,15 +26,23 @@ To get your `Organization` visit https://platform.openai.com/account/org-setting
 
 ### 1. If `msg.topic` is set to `completion`:
 
-`msg.payload` should be a well-written prompt that provides enough information for the model to know what you want and how it should respond. Its success generally depends on the complexity of the task and quality of your prompt. A good rule of thumb is to think about how you would write a word problem for a middle schooler to solve.
+[Required] `msg.payload` should be a well-written prompt that provides enough information for the model to know what you want and how it should respond.
+
+Its success generally depends on the complexity of the task and quality of your prompt. A good rule of thumb is to think about how you would write a word problem for a middle schooler to solve.
 
 ### 2. If `msg.topic` is set to `image`:
 
-`msg.payload` should be a prompt of text description of the desired image.
+[Required] `msg.payload` should be a prompt of text description of the desired image.
+
+[Optional] `msg.size` should be a string of the desired image dimensions. [Default:"256x256"]
+
+[Optional] `msg.format` should be a string of either "b64_json" or "url". [Default:"b64_json"]
 
 ### 3. If `msg.topic` is set to `edit`:
 
-`msg.payload` should be a prompt of text to use as a starting point for the edit.
+[Required] `msg.payload` should be a prompt of text to use as a starting point for the edit.
+
+[Required] `msg.last` should be a string of text to use as the input to be edited.
 
 ### Example
 
