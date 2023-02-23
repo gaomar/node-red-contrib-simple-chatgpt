@@ -16,7 +16,7 @@ npm install node-red-contrib-custom-chatgpt
 
 ## Setup
 
-When editing the nodes properties, to get your `Token` log in to [ChatGPT](https://chat.openai.com/chat) and then visit https://chat.openai.com/api/auth/session then copy and paste the "accessToken" into the nodes `Token` property value.
+When editing the nodes properties, to get your `OPENAI_API_KEY` log in to [ChatGPT](https://chat.openai.com/chat) and then visit https://platform.openai.com/account/api-keys click "+ Create new secret key" then copy and paste the "API key" into the nodes `API_KEY` property value.
 
 To get your `Organization` visit https://platform.openai.com/account/org-settings then copy and paste the "OrganizationID" into the nodes `Organization` property value.
 
@@ -38,7 +38,7 @@ To get your `Organization` visit https://platform.openai.com/account/org-setting
 
 ### Example
 
-None for now sorry, maybe submit a pull request with one.
+[<img src="/examples/example.png">](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/blob/main/examples/chatgpt.json)
 
 ## Links
 

@@ -1,0 +1,270 @@
+[
+    {
+        "id": "8a3e36213bb148a2",
+        "type": "tab",
+        "label": "ChatGPT Example",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e91f72dda96cd4c2",
+        "type": "chatgpt",
+        "z": "8a3e36213bb148a2",
+        "name": "",
+        "API_KEY": "",
+        "Organization": "",
+        "x": 420,
+        "y": 80,
+        "wires": [
+            [
+                "1632b742698ac707"
+            ]
+        ]
+    },
+    {
+        "id": "c228fdef23a53801",
+        "type": "inject",
+        "z": "8a3e36213bb148a2",
+        "name": "completion:Write a story about a dog",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "completion",
+        "payload": "Write a story about a dog",
+        "payloadType": "str",
+        "x": 180,
+        "y": 40,
+        "wires": [
+            [
+                "e91f72dda96cd4c2"
+            ]
+        ]
+    },
+    {
+        "id": "211c948fe5ac83ea",
+        "type": "inject",
+        "z": "8a3e36213bb148a2",
+        "name": "image:a simple bird",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "format",
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "p": "size",
+                "v": "1024x1024",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "image",
+        "payload": "a simple bird",
+        "payloadType": "str",
+        "x": 230,
+        "y": 120,
+        "wires": [
+            [
+                "e91f72dda96cd4c2"
+            ]
+        ]
+    },
+    {
+        "id": "e9aed2395fc6a82b",
+        "type": "image viewer",
+        "z": "8a3e36213bb148a2",
+        "name": "",
+        "width": "1024",
+        "data": "payload",
+        "dataType": "msg",
+        "active": true,
+        "x": 710,
+        "y": 120,
+        "wires": [
+            [
+                "4ecab111259bc14f"
+            ]
+        ]
+    },
+    {
+        "id": "4ecab111259bc14f",
+        "type": "debug",
+        "z": "8a3e36213bb148a2",
+        "name": "debug images",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 880,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "7040316175bb07f7",
+        "type": "inject",
+        "z": "8a3e36213bb148a2",
+        "name": "edit:reverse the text",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "last",
+                "v": "last",
+                "vt": "flow"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "edit",
+        "payload": "reverse the text",
+        "payloadType": "str",
+        "x": 230,
+        "y": 80,
+        "wires": [
+            [
+                "e91f72dda96cd4c2"
+            ]
+        ]
+    },
+    {
+        "id": "9c8b25403a1a18fc",
+        "type": "change",
+        "z": "8a3e36213bb148a2",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "last",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 870,
+        "y": 40,
+        "wires": [
+            [
+                "5e86edabfae0406b"
+            ]
+        ]
+    },
+    {
+        "id": "1632b742698ac707",
+        "type": "switch",
+        "z": "8a3e36213bb148a2",
+        "name": "",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "edit",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "completion",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "image",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 570,
+        "y": 80,
+        "wires": [
+            [
+                "0328593caf647556"
+            ],
+            [
+                "0328593caf647556"
+            ],
+            [
+                "e9aed2395fc6a82b"
+            ]
+        ]
+    },
+    {
+        "id": "0328593caf647556",
+        "type": "string",
+        "z": "8a3e36213bb148a2",
+        "name": "",
+        "methods": [
+            {
+                "name": "collapseWhitespace",
+                "params": []
+            }
+        ],
+        "prop": "payload",
+        "propout": "payload",
+        "object": "msg",
+        "objectout": "msg",
+        "x": 710,
+        "y": 40,
+        "wires": [
+            [
+                "9c8b25403a1a18fc"
+            ]
+        ]
+    },
+    {
+        "id": "5e86edabfae0406b",
+        "type": "debug",
+        "z": "8a3e36213bb148a2",
+        "name": "debug completions/edits",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1090,
+        "y": 40,
+        "wires": []
+    }
+]
