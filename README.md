@@ -44,9 +44,13 @@ Its success generally depends on the complexity of the task and quality of your 
 
 [Required] `msg.last` should be a string of text to use as the input to be edited.
 
-### Example
+### Examples
 
+Basic usage for image, completion, and edit.
 [<img src="/examples/example.png">](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/blob/main/examples/chatgpt.json)
+
+More advanced usage with templates.
+[<img src="/examples/example2.png">](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/blob/main/examples/chatgpt.json)
 
 ## Links
 

@@ -1,6 +1,6 @@
 [
     {
-        "id": "8a3e36213bb148a2",
+        "id": "fbdfc5626b464675",
         "type": "tab",
         "label": "ChatGPT Example",
         "disabled": false,
@@ -8,24 +8,36 @@
         "env": []
     },
     {
-        "id": "e91f72dda96cd4c2",
-        "type": "chatgpt",
-        "z": "8a3e36213bb148a2",
-        "name": "",
-        "API_KEY": "",
-        "Organization": "",
-        "x": 420,
-        "y": 80,
+        "id": "d2e9349a644da4e6",
+        "type": "junction",
+        "z": "fbdfc5626b464675",
+        "x": 580,
+        "y": 280,
         "wires": [
             [
-                "1632b742698ac707"
+                "1ce2faa6ead34753"
             ]
         ]
     },
     {
-        "id": "c228fdef23a53801",
+        "id": "c919b07a0e768bc0",
+        "type": "chatgpt",
+        "z": "fbdfc5626b464675",
+        "name": "",
+        "API_KEY": "",
+        "Organization": "",
+        "x": 440,
+        "y": 120,
+        "wires": [
+            [
+                "27ef347282d542a1"
+            ]
+        ]
+    },
+    {
+        "id": "dc7ab10149f5de19",
         "type": "inject",
-        "z": "8a3e36213bb148a2",
+        "z": "fbdfc5626b464675",
         "name": "completion:Write a story about a dog",
         "props": [
             {
@@ -43,18 +55,18 @@
         "topic": "completion",
         "payload": "Write a story about a dog",
         "payloadType": "str",
-        "x": 180,
-        "y": 40,
+        "x": 200,
+        "y": 80,
         "wires": [
             [
-                "e91f72dda96cd4c2"
+                "c919b07a0e768bc0"
             ]
         ]
     },
     {
-        "id": "211c948fe5ac83ea",
+        "id": "e94691cd2e4f6b9e",
         "type": "inject",
-        "z": "8a3e36213bb148a2",
+        "z": "fbdfc5626b464675",
         "name": "image:a simple bird",
         "props": [
             {
@@ -66,7 +78,7 @@
             },
             {
                 "p": "format",
-                "v": "",
+                "v": "url",
                 "vt": "str"
             },
             {
@@ -82,36 +94,36 @@
         "topic": "image",
         "payload": "a simple bird",
         "payloadType": "str",
-        "x": 230,
-        "y": 120,
+        "x": 250,
+        "y": 160,
         "wires": [
             [
-                "e91f72dda96cd4c2"
+                "c919b07a0e768bc0"
             ]
         ]
     },
     {
-        "id": "e9aed2395fc6a82b",
+        "id": "375f8147e1abd8f0",
         "type": "image viewer",
-        "z": "8a3e36213bb148a2",
+        "z": "fbdfc5626b464675",
         "name": "",
         "width": "1024",
         "data": "payload",
         "dataType": "msg",
         "active": true,
-        "x": 710,
-        "y": 120,
+        "x": 730,
+        "y": 160,
         "wires": [
             [
-                "4ecab111259bc14f"
+                "5193b9b97283f046"
             ]
         ]
     },
     {
-        "id": "4ecab111259bc14f",
+        "id": "5193b9b97283f046",
         "type": "debug",
-        "z": "8a3e36213bb148a2",
-        "name": "debug images",
+        "z": "fbdfc5626b464675",
+        "name": "debug images response",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -120,14 +132,14 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 880,
-        "y": 120,
+        "x": 930,
+        "y": 160,
         "wires": []
     },
     {
-        "id": "7040316175bb07f7",
+        "id": "c2b628e776fad865",
         "type": "inject",
-        "z": "8a3e36213bb148a2",
+        "z": "fbdfc5626b464675",
         "name": "edit:reverse the text",
         "props": [
             {
@@ -148,20 +160,20 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "edit",
-        "payload": "reverse the text",
+        "payload": "2",
         "payloadType": "str",
-        "x": 230,
-        "y": 80,
+        "x": 250,
+        "y": 120,
         "wires": [
             [
-                "e91f72dda96cd4c2"
+                "c919b07a0e768bc0"
             ]
         ]
     },
     {
-        "id": "9c8b25403a1a18fc",
+        "id": "8f6a7a8887b5a3f4",
         "type": "change",
-        "z": "8a3e36213bb148a2",
+        "z": "fbdfc5626b464675",
         "name": "",
         "rules": [
             {
@@ -178,18 +190,18 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 870,
-        "y": 40,
+        "x": 890,
+        "y": 80,
         "wires": [
             [
-                "5e86edabfae0406b"
+                "5a30926285d05d70"
             ]
         ]
     },
     {
-        "id": "1632b742698ac707",
+        "id": "27ef347282d542a1",
         "type": "switch",
-        "z": "8a3e36213bb148a2",
+        "z": "fbdfc5626b464675",
         "name": "",
         "property": "topic",
         "propertyType": "msg",
@@ -213,24 +225,24 @@
         "checkall": "true",
         "repair": false,
         "outputs": 3,
-        "x": 570,
-        "y": 80,
+        "x": 590,
+        "y": 120,
         "wires": [
             [
-                "0328593caf647556"
+                "43a204e32958ea57"
             ],
             [
-                "0328593caf647556"
+                "43a204e32958ea57"
             ],
             [
-                "e9aed2395fc6a82b"
+                "375f8147e1abd8f0"
             ]
         ]
     },
     {
-        "id": "0328593caf647556",
+        "id": "43a204e32958ea57",
         "type": "string",
-        "z": "8a3e36213bb148a2",
+        "z": "fbdfc5626b464675",
         "name": "",
         "methods": [
             {
@@ -242,19 +254,19 @@
         "propout": "payload",
         "object": "msg",
         "objectout": "msg",
-        "x": 710,
-        "y": 40,
+        "x": 730,
+        "y": 80,
         "wires": [
             [
-                "9c8b25403a1a18fc"
+                "8f6a7a8887b5a3f4"
             ]
         ]
     },
     {
-        "id": "5e86edabfae0406b",
+        "id": "5a30926285d05d70",
         "type": "debug",
-        "z": "8a3e36213bb148a2",
-        "name": "debug completions/edits",
+        "z": "fbdfc5626b464675",
+        "name": "debug completions/edits/templates response",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -263,8 +275,161 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1090,
-        "y": 40,
+        "x": 1170,
+        "y": 80,
         "wires": []
+    },
+    {
+        "id": "cf7ed9e9d369e4d3",
+        "type": "template",
+        "z": "fbdfc5626b464675",
+        "name": "proofread",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Proofread the following text: `{{payload}}`",
+        "output": "str",
+        "x": 440,
+        "y": 280,
+        "wires": [
+            [
+                "d2e9349a644da4e6"
+            ]
+        ]
+    },
+    {
+        "id": "18427ffac287f838",
+        "type": "inject",
+        "z": "fbdfc5626b464675",
+        "name": "text to proofread",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "I ate some apples four dinner last thursday. they were very good.",
+        "payloadType": "str",
+        "x": 260,
+        "y": 280,
+        "wires": [
+            [
+                "cf7ed9e9d369e4d3"
+            ]
+        ]
+    },
+    {
+        "id": "cbbfed8f347bb822",
+        "type": "debug",
+        "z": "fbdfc5626b464675",
+        "name": "debug prompt templates",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 490,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "d454c6322caf1d51",
+        "type": "template",
+        "z": "fbdfc5626b464675",
+        "name": "generate d&d npc",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Generate a high-quality Dungeons and Dragons NPC that is a {{gender}} {{race}} {{class}} {{occupation}}.",
+        "output": "str",
+        "x": 470,
+        "y": 340,
+        "wires": [
+            [
+                "d2e9349a644da4e6"
+            ]
+        ]
+    },
+    {
+        "id": "eda3bc80cbb8c0ad",
+        "type": "inject",
+        "z": "fbdfc5626b464675",
+        "name": "npc characteristics",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "gender",
+                "v": "Male",
+                "vt": "str"
+            },
+            {
+                "p": "race",
+                "v": "Orc",
+                "vt": "str"
+            },
+            {
+                "p": "class",
+                "v": "Wizard",
+                "vt": "str"
+            },
+            {
+                "p": "occupation",
+                "v": "Shop-keeper",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 250,
+        "y": 340,
+        "wires": [
+            [
+                "d454c6322caf1d51"
+            ]
+        ]
+    },
+    {
+        "id": "1ce2faa6ead34753",
+        "type": "change",
+        "z": "fbdfc5626b464675",
+        "name": "completion",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "completion",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 270,
+        "y": 220,
+        "wires": [
+            [
+                "c919b07a0e768bc0",
+                "cbbfed8f347bb822"
+            ]
+        ]
     }
 ]
