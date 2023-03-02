@@ -12,12 +12,20 @@ module.exports = (RED) => {
 
       node.on('input', async (msg) => {
         node.status({fill:"green",shape:"dot",text:"処理中..."});
-        const response = await openai.createCompletion({
-          model: "text-davinci-003",
-          prompt: msg.payload,
-          max_tokens: 4000,
+        if (typeof msg.pastMessages === "undefined") msg.pastMessages = [];
+        if (msg.pastMessages.length == 0 && config.SystemSetting.length != 0) {
+          const system = {"role": "system", "content": config.SystemSetting};
+          msg.pastMessages.push(system);
+        }
+        const newMessage = {"role": "user", "content": msg.payload};
+        msg.pastMessages.push(newMessage);
+        const response = await openai.createChatCompletion({
+          model: 'gpt-3.5-turbo',
+          messages: msg.pastMessages
         });
-        msg.payload = response.data.choices[0].text;
+        const responseMessage = {"role": "assistant", "content": response.data.choices[0].message.content};
+        msg.pastMessages.push(responseMessage);
+        msg.payload = response.data.choices[0].message.content;
         node.status({});
         node.send(msg)
       });

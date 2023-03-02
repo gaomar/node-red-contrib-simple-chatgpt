@@ -19,4 +19,6 @@ AdminタブからInstall
 
 ## release
 
+* 2023/03/02: ChatGPT API（gpt-3.5-turbo）対応（v1.1.0）
 * 2022/12/05: 初回リリース（v1.0.0）
+
