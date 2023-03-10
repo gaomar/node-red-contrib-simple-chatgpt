@@ -64,6 +64,10 @@
             <span class="property-type">string</span>
         </dt>
         <dd> The input to be edited.</dd>
+        <dt class="optional">msg.history
+            <span class="property-type">array</span>
+        </dt>
+        <dd> The conversation history.</dd>
     </dl>
     <h3>Outputs</h3>
      <ol class="node-ports">
@@ -72,10 +76,12 @@
              <dd>The output of the selected model based on the input prompt.</dd>
              <dt>msg.full <span class="property-type">object</span></dt>
              <dd>The full response object of the selected model.</dd>
+             <dt>msg.history <span class="property-type">array</span></dt>
+             <dd>The conversation history.</dd>
          </dl>
      </ol>
     <h3>Details</h3>
-    <p>Set <code>msg.topic</code> to a string with the value of <code>completion</code>, <code>image</code>, or <code>edit</code>.</p>
+    <p>Set <code>msg.topic</code> to a string with the value of <code>completion</code>, <code>image</code>, <code>edit</code>, or <code>turbo</code>.</p>
     <p>1. If <code>msg.topic</code> is set to <code>completion</code>:</p>
     <p>Required <code>msg.payload</code> should be a well-written prompt that provides enough information for the model to know what you want and how it should respond. Its success generally depends on the complexity of the task and quality of your prompt. A good rule of thumb is to think about how you would write a word problem for a middle schooler to solve.</p>
     <p>2. If <code>msg.topic</code> is set to <code>image</code>:</p>
@@ -85,4 +91,7 @@
     <p>3. If <code>msg.topic</code> is set to <code>edit</code>:</p>
     <p>Required <code>msg.payload</code> should be a prompt of text to use as a starting point for the edit.</p>
     <p>Required <code>msg.last</code> should be a string of text to use as the input to be edited.</p>
+    <p>4. If <code>msg.topic</code> is set to <code>turbo</code>:</p>
+    <p>Required <code>msg.payload</code> should be a well-written prompt that provides enough information for the model to know what you want and how it should respond. Its success generally depends on the complexity of the task and quality of your prompt. A good rule of thumb is to think about how you would write a word problem for a middle schooler to solve.</p>
+    <p>Optional <code>msg.history</code> should be an array of objects containing the conversation history. [Default:[]]</p>
  </script>

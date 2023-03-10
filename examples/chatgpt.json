@@ -1,43 +1,43 @@
 [
     {
-        "id": "fbdfc5626b464675",
+        "id": "99a8aaa6537c5607",
         "type": "tab",
-        "label": "ChatGPT Example",
+        "label": "ChatGPT",
         "disabled": false,
         "info": "",
         "env": []
     },
     {
-        "id": "d2e9349a644da4e6",
+        "id": "cf8441cceeb9d2e6",
         "type": "junction",
-        "z": "fbdfc5626b464675",
-        "x": 580,
-        "y": 280,
+        "z": "99a8aaa6537c5607",
+        "x": 680,
+        "y": 520,
         "wires": [
             [
-                "1ce2faa6ead34753"
+                "b6e05a45d6937c30"
             ]
         ]
     },
     {
-        "id": "c919b07a0e768bc0",
+        "id": "59cb2749b4b21764",
         "type": "chatgpt",
-        "z": "fbdfc5626b464675",
+        "z": "99a8aaa6537c5607",
         "name": "",
         "API_KEY": "",
         "Organization": "",
-        "x": 440,
-        "y": 120,
+        "x": 460,
+        "y": 140,
         "wires": [
             [
-                "27ef347282d542a1"
+                "e4458f17c29a5ca0"
             ]
         ]
     },
     {
-        "id": "dc7ab10149f5de19",
+        "id": "42d0dc13386dc408",
         "type": "inject",
-        "z": "fbdfc5626b464675",
+        "z": "99a8aaa6537c5607",
         "name": "completion:Write a story about a dog",
         "props": [
             {
@@ -56,17 +56,17 @@
         "payload": "Write a story about a dog",
         "payloadType": "str",
         "x": 200,
-        "y": 80,
+        "y": 100,
         "wires": [
             [
-                "c919b07a0e768bc0"
+                "59cb2749b4b21764"
             ]
         ]
     },
     {
-        "id": "e94691cd2e4f6b9e",
+        "id": "b311e53c8cc6e850",
         "type": "inject",
-        "z": "fbdfc5626b464675",
+        "z": "99a8aaa6537c5607",
         "name": "image:a simple bird",
         "props": [
             {
@@ -95,34 +95,34 @@
         "payload": "a simple bird",
         "payloadType": "str",
         "x": 250,
-        "y": 160,
+        "y": 180,
         "wires": [
             [
-                "c919b07a0e768bc0"
+                "59cb2749b4b21764"
             ]
         ]
     },
     {
-        "id": "375f8147e1abd8f0",
+        "id": "39716035ecafb63e",
         "type": "image viewer",
-        "z": "fbdfc5626b464675",
+        "z": "99a8aaa6537c5607",
         "name": "",
         "width": "1024",
         "data": "payload",
         "dataType": "msg",
         "active": true,
-        "x": 730,
-        "y": 160,
+        "x": 770,
+        "y": 180,
         "wires": [
             [
-                "5193b9b97283f046"
+                "d34d8873061a0dc5"
             ]
         ]
     },
     {
-        "id": "5193b9b97283f046",
+        "id": "d34d8873061a0dc5",
         "type": "debug",
-        "z": "fbdfc5626b464675",
+        "z": "99a8aaa6537c5607",
         "name": "debug images response",
         "active": true,
         "tosidebar": true,
@@ -132,14 +132,14 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 930,
-        "y": 160,
+        "x": 1210,
+        "y": 180,
         "wires": []
     },
     {
-        "id": "c2b628e776fad865",
+        "id": "bddef048a8549801",
         "type": "inject",
-        "z": "fbdfc5626b464675",
+        "z": "99a8aaa6537c5607",
         "name": "edit:reverse the text",
         "props": [
             {
@@ -163,17 +163,17 @@
         "payload": "2",
         "payloadType": "str",
         "x": 250,
-        "y": 120,
+        "y": 140,
         "wires": [
             [
-                "c919b07a0e768bc0"
+                "59cb2749b4b21764"
             ]
         ]
     },
     {
-        "id": "8f6a7a8887b5a3f4",
+        "id": "42101fde0556c447",
         "type": "change",
-        "z": "fbdfc5626b464675",
+        "z": "99a8aaa6537c5607",
         "name": "",
         "rules": [
             {
@@ -190,18 +190,18 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 890,
-        "y": 80,
+        "x": 930,
+        "y": 100,
         "wires": [
             [
-                "5a30926285d05d70"
+                "0b878430dc63a7b8"
             ]
         ]
     },
     {
-        "id": "27ef347282d542a1",
+        "id": "e4458f17c29a5ca0",
         "type": "switch",
-        "z": "fbdfc5626b464675",
+        "z": "99a8aaa6537c5607",
         "name": "",
         "property": "topic",
         "propertyType": "msg",
@@ -218,31 +218,39 @@
             },
             {
                 "t": "eq",
+                "v": "turbo",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
                 "v": "image",
                 "vt": "str"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 3,
-        "x": 590,
-        "y": 120,
+        "outputs": 4,
+        "x": 610,
+        "y": 140,
         "wires": [
             [
-                "43a204e32958ea57"
+                "343a403cc2c27bd8"
             ],
             [
-                "43a204e32958ea57"
+                "343a403cc2c27bd8"
             ],
             [
-                "375f8147e1abd8f0"
+                "62231254eed45f65"
+            ],
+            [
+                "39716035ecafb63e"
             ]
         ]
     },
     {
-        "id": "43a204e32958ea57",
+        "id": "343a403cc2c27bd8",
         "type": "string",
-        "z": "fbdfc5626b464675",
+        "z": "99a8aaa6537c5607",
         "name": "",
         "methods": [
             {
@@ -254,18 +262,18 @@
         "propout": "payload",
         "object": "msg",
         "objectout": "msg",
-        "x": 730,
-        "y": 80,
+        "x": 770,
+        "y": 100,
         "wires": [
             [
-                "8f6a7a8887b5a3f4"
+                "42101fde0556c447"
             ]
         ]
     },
     {
-        "id": "5a30926285d05d70",
+        "id": "0b878430dc63a7b8",
         "type": "debug",
-        "z": "fbdfc5626b464675",
+        "z": "99a8aaa6537c5607",
         "name": "debug completions/edits/templates response",
         "active": true,
         "tosidebar": true,
@@ -275,34 +283,34 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1170,
-        "y": 80,
+        "x": 1270,
+        "y": 100,
         "wires": []
     },
     {
-        "id": "cf7ed9e9d369e4d3",
+        "id": "198163aeec14e576",
         "type": "template",
-        "z": "fbdfc5626b464675",
-        "name": "proofread",
+        "z": "99a8aaa6537c5607",
+        "name": "proofread input",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
         "template": "Proofread the following text: `{{payload}}`",
         "output": "str",
-        "x": 440,
-        "y": 280,
+        "x": 480,
+        "y": 520,
         "wires": [
             [
-                "d2e9349a644da4e6"
+                "cf8441cceeb9d2e6"
             ]
         ]
     },
     {
-        "id": "18427ffac287f838",
+        "id": "308cd815a995015b",
         "type": "inject",
-        "z": "fbdfc5626b464675",
-        "name": "text to proofread",
+        "z": "99a8aaa6537c5607",
+        "name": "imput text to proofread",
         "props": [
             {
                 "p": "payload"
@@ -315,18 +323,18 @@
         "topic": "",
         "payload": "I ate some apples four dinner last thursday. they were very good.",
         "payloadType": "str",
-        "x": 260,
-        "y": 280,
+        "x": 240,
+        "y": 520,
         "wires": [
             [
-                "cf7ed9e9d369e4d3"
+                "198163aeec14e576"
             ]
         ]
     },
     {
-        "id": "cbbfed8f347bb822",
+        "id": "8de0c5dd9078ba04",
         "type": "debug",
-        "z": "fbdfc5626b464675",
+        "z": "99a8aaa6537c5607",
         "name": "debug prompt templates",
         "active": true,
         "tosidebar": true,
@@ -336,79 +344,34 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 490,
-        "y": 220,
+        "x": 510,
+        "y": 460,
         "wires": []
     },
     {
-        "id": "d454c6322caf1d51",
+        "id": "3cbeac4446f56a98",
         "type": "template",
-        "z": "fbdfc5626b464675",
-        "name": "generate d&d npc",
+        "z": "99a8aaa6537c5607",
+        "name": "generate d&d npc description",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "Generate a high-quality Dungeons and Dragons NPC that is a {{gender}} {{race}} {{class}} {{occupation}}.",
+        "template": "Generate a high-quality Dungeons and Dragons NPC named {{name}} that is a {{gender}} {{race}} {{class}} {{occupation}}.",
         "output": "str",
-        "x": 470,
-        "y": 340,
+        "x": 520,
+        "y": 560,
         "wires": [
             [
-                "d2e9349a644da4e6"
+                "cf8441cceeb9d2e6"
             ]
         ]
     },
     {
-        "id": "eda3bc80cbb8c0ad",
-        "type": "inject",
-        "z": "fbdfc5626b464675",
-        "name": "npc characteristics",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "gender",
-                "v": "Male",
-                "vt": "str"
-            },
-            {
-                "p": "race",
-                "v": "Orc",
-                "vt": "str"
-            },
-            {
-                "p": "class",
-                "v": "Wizard",
-                "vt": "str"
-            },
-            {
-                "p": "occupation",
-                "v": "Shop-keeper",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "str",
-        "x": 250,
-        "y": 340,
-        "wires": [
-            [
-                "d454c6322caf1d51"
-            ]
-        ]
-    },
-    {
-        "id": "1ce2faa6ead34753",
+        "id": "b6e05a45d6937c30",
         "type": "change",
-        "z": "fbdfc5626b464675",
-        "name": "completion",
+        "z": "99a8aaa6537c5607",
+        "name": "set msg.topic to completion",
         "rules": [
             {
                 "t": "set",
@@ -423,13 +386,395 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 270,
-        "y": 220,
+        "x": 220,
+        "y": 460,
         "wires": [
             [
-                "c919b07a0e768bc0",
-                "cbbfed8f347bb822"
+                "59cb2749b4b21764",
+                "8de0c5dd9078ba04"
             ]
         ]
+    },
+    {
+        "id": "aa95d33144d4bd6a",
+        "type": "template",
+        "z": "99a8aaa6537c5607",
+        "name": "generate d&d npc stat block",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Generate a {{format}} for a high-quality Dungeons and Dragons 5e NPC that is a level {{level}} {{gender}} {{race}} {{class}} {{occupation}}.",
+        "output": "str",
+        "x": 520,
+        "y": 600,
+        "wires": [
+            [
+                "cf8441cceeb9d2e6"
+            ]
+        ]
+    },
+    {
+        "id": "136e02a3a2c46997",
+        "type": "inject",
+        "z": "99a8aaa6537c5607",
+        "name": "input npc characteristics",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "gender",
+                "v": "Female",
+                "vt": "str"
+            },
+            {
+                "p": "race",
+                "v": "Dwarf",
+                "vt": "str"
+            },
+            {
+                "p": "class",
+                "v": "Cleric",
+                "vt": "str"
+            },
+            {
+                "p": "occupation",
+                "v": "Blacksmith",
+                "vt": "str"
+            },
+            {
+                "p": "level",
+                "v": "5",
+                "vt": "str"
+            },
+            {
+                "p": "format",
+                "v": "stat block",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 240,
+        "y": 600,
+        "wires": [
+            [
+                "aa95d33144d4bd6a"
+            ]
+        ]
+    },
+    {
+        "id": "5c5d8d2917dbea0e",
+        "type": "inject",
+        "z": "99a8aaa6537c5607",
+        "name": "input npc characteristics",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "gender",
+                "v": "Female",
+                "vt": "str"
+            },
+            {
+                "p": "race",
+                "v": "Dwarf",
+                "vt": "str"
+            },
+            {
+                "p": "class",
+                "v": "Cleric",
+                "vt": "str"
+            },
+            {
+                "p": "occupation",
+                "v": "Blacksmith",
+                "vt": "str"
+            },
+            {
+                "p": "level",
+                "v": "5",
+                "vt": "str"
+            },
+            {
+                "p": "name",
+                "v": "Merelda Ironheart",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 240,
+        "y": 560,
+        "wires": [
+            [
+                "3cbeac4446f56a98"
+            ]
+        ]
+    },
+    {
+        "id": "012cb585da4a47d2",
+        "type": "inject",
+        "z": "99a8aaa6537c5607",
+        "name": "turbo:Write a story about a Elephant",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "history",
+                "v": "#:(memoryOnly)::history",
+                "vt": "flow"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "turbo",
+        "payload": "Change it to be about a Elephant.",
+        "payloadType": "str",
+        "x": 200,
+        "y": 280,
+        "wires": [
+            [
+                "59cb2749b4b21764"
+            ]
+        ]
+    },
+    {
+        "id": "e10a1535e6f2603e",
+        "type": "change",
+        "z": "99a8aaa6537c5607",
+        "name": "set flow.last & flow.history",
+        "rules": [
+            {
+                "t": "set",
+                "p": "last",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "#:(memoryOnly)::history",
+                "pt": "flow",
+                "to": "history",
+                "tot": "msg",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 970,
+        "y": 140,
+        "wires": [
+            [
+                "a5b7d220495f8ee3"
+            ]
+        ]
+    },
+    {
+        "id": "62231254eed45f65",
+        "type": "string",
+        "z": "99a8aaa6537c5607",
+        "name": "",
+        "methods": [
+            {
+                "name": "collapseWhitespace",
+                "params": []
+            }
+        ],
+        "prop": "payload",
+        "propout": "payload",
+        "object": "msg",
+        "objectout": "msg",
+        "x": 770,
+        "y": 140,
+        "wires": [
+            [
+                "e10a1535e6f2603e"
+            ]
+        ]
+    },
+    {
+        "id": "a5b7d220495f8ee3",
+        "type": "debug",
+        "z": "99a8aaa6537c5607",
+        "name": "debug \"gpt-3.5-turbo-0301\" response",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1250,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "aae49618ba869fd5",
+        "type": "change",
+        "z": "99a8aaa6537c5607",
+        "name": "reset flow.history",
+        "rules": [
+            {
+                "t": "set",
+                "p": "#:(memoryOnly)::history",
+                "pt": "flow",
+                "to": "history",
+                "tot": "msg",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 470,
+        "y": 40,
+        "wires": [
+            [
+                "71bbba7912a2e68b"
+            ]
+        ]
+    },
+    {
+        "id": "1a948b8cef88d3b7",
+        "type": "inject",
+        "z": "99a8aaa6537c5607",
+        "name": "Reset convesation history",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "history",
+                "v": "[]",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "turbo",
+        "payload": "",
+        "payloadType": "str",
+        "x": 230,
+        "y": 40,
+        "wires": [
+            [
+                "aae49618ba869fd5"
+            ]
+        ]
+    },
+    {
+        "id": "71bbba7912a2e68b",
+        "type": "debug",
+        "z": "99a8aaa6537c5607",
+        "name": "debug reset",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1170,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "f93138b63cf443e3",
+        "type": "inject",
+        "z": "99a8aaa6537c5607",
+        "name": "turbo:Change it to be about a dog.",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "history",
+                "v": "#:(memoryOnly)::history",
+                "vt": "flow"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "turbo",
+        "payload": "Change it to be about a dog.",
+        "payloadType": "str",
+        "x": 200,
+        "y": 360,
+        "wires": [
+            [
+                "59cb2749b4b21764"
+            ]
+        ]
+    },
+    {
+        "id": "a0a2360f8d0cf2fb",
+        "type": "comment",
+        "z": "99a8aaa6537c5607",
+        "name": "Using templates to preset model behavior",
+        "info": "",
+        "x": 180,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "2f5cd362ab11c50b",
+        "type": "comment",
+        "z": "99a8aaa6537c5607",
+        "name": "Starting a conversation [turbo]",
+        "info": "",
+        "x": 220,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "8b9aaa67d3a22823",
+        "type": "comment",
+        "z": "99a8aaa6537c5607",
+        "name": "Continuing a conversation [turbo]",
+        "info": "",
+        "x": 210,
+        "y": 320,
+        "wires": []
     }
 ]
