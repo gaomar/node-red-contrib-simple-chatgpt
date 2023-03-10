@@ -310,7 +310,7 @@
         "id": "308cd815a995015b",
         "type": "inject",
         "z": "99a8aaa6537c5607",
-        "name": "imput text to proofread",
+        "name": "input text to proofread",
         "props": [
             {
                 "p": "payload"
