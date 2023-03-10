@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-custom-chatgpt",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "ChatGPT in Node-RED",
   "main": "chatgpt.js",
   "scripts": {
@@ -33,6 +33,6 @@
   },
   "homepage": "https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt#readme",
   "dependencies": {
-    "openai": "^3.1.0"
+    "openai": "^3.2.1"
   }
 }

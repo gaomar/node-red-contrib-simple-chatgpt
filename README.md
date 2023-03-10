@@ -22,7 +22,7 @@ To get your `Organization` visit https://platform.openai.com/account/org-setting
 
 ## Usage
 
-### Set `msg.topic` to a string with the value of `completion`, `image`, or `edit`.
+### Set `msg.topic` to a string with the value of `completion`, `image`, `edit`, or `turbo`.
 
 ### 1. If `msg.topic` is set to `completion`:
 
@@ -44,13 +44,24 @@ Its success generally depends on the complexity of the task and quality of your 
 
 [Required] `msg.last` should be a string of text to use as the input to be edited.
 
+### 4. If `msg.topic` is set to `turbo`:
+
+[Required] `msg.payload` should be a well-written prompt that provides enough information for the model to know what you want and how it should respond.
+
+Its success generally depends on the complexity of the task and quality of your prompt. A good rule of thumb is to think about how you would write a word problem for a middle schooler to solve.
+
+[Optional] `msg.history` should be an array of objects containing the conversation history. [Default:[]]
+
 ### Examples
 
-Basic usage for image, completion, and edit.
+[Old screenshot] Basic usage for image, completion, and edit.
 [<img src="/examples/example.png">](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/blob/main/examples/chatgpt.json)
 
-More advanced usage with templates.
+[Old screenshot] More advanced usage with templates.
 [<img src="/examples/example2.png">](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/blob/main/examples/chatgpt.json)
+
+[New screenshot] Usage of model `gpt-3.5-turbo` and conversation history.
+[<img src="/examples/example3.png">](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/blob/main/examples/chatgpt.json)
 
 ## Links
 
@@ -61,3 +72,7 @@ More advanced usage with templates.
 ### Bugs reports and feature requests
 
 Please report any issues or feature requests at <a href="https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/issues">GitHub</a>.
+
+### Changelog
+
+View the full list of [changes](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/blob/main/CHANGELOG.md).
