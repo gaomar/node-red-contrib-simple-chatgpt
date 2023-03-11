@@ -1,6 +1,12 @@
 
 # Change Log
- 
+
+## [1.2.1] - 2023-03-10
+
+### Changed
+
+- Updated `package.json` keywords.
+
 ## [1.2.0] - 2023-03-10
  
 ### Added
