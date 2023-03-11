@@ -1,6 +1,12 @@
 
 # Change Log
 
+## [1.2.2] - 2023-03-10
+
+### Changed
+
+- Updated node to fix unnecessary whitespace in conversation history.
+
 ## [1.2.1] - 2023-03-10
 
 ### Changed

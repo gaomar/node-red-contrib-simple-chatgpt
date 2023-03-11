@@ -76,7 +76,8 @@ module.exports = (RED) => {
                     model: "gpt-3.5-turbo",
                     messages: msg.history
                 });
-                const result = {"role": "assistant", "content": response.data.choices[0].message.content};
+                const trimmedContent = response.data.choices[0].message.content.trim();
+                const result = {"role": "assistant", "content": trimmedContent};
                 msg.history.push(result);
                 msg.payload = response.data.choices[0].message.content;
                 msg.full = response;
