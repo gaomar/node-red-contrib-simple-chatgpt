@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-custom-chatgpt",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "ChatGPT in Node-RED",
   "main": "chatgpt.js",
   "scripts": {
@@ -27,7 +27,9 @@
     "code-generation",
     "conversational-ai",
     "gpt-3",
-    "gpt-35-turbo-0301"
+    "gpt-35-turbo-0301",
+    "gpt-4",
+    "gpt-4-0314"
   ],
   "node-red": {
     "version": ">=2.0.0",

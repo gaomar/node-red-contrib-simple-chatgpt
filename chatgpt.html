@@ -64,10 +64,38 @@
             <span class="property-type">string</span>
         </dt>
         <dd> The input to be edited.</dd>
+        <dt class="optional">msg.suffix
+            <span class="property-type">string</span>
+        </dt>
+        <dd> The suffix that comes after a completion of inserted text.</dd>
         <dt class="optional">msg.history
             <span class="property-type">array</span>
         </dt>
-        <dd> The conversation history.</dd>
+        <dd> The conversation history.</dd> 
+        <dt class="optional">msg.n
+            <span class="property-type">number</span>
+        </dt>
+        <dd> The number of responses desired.</dd>
+        <dt class="optional">msg.temperature
+            <span class="property-type">number</span>
+        </dt>
+        <dd> The sampling temperature to use, between <code>0</code> and <code>2</code>. Higher values like <code>0.8</code> will make the output more random, while lower values like <code>0.2</code> will make it more focused and deterministic.</dd>
+        <dt class="optional">msg.top_p
+            <span class="property-type">number</span>
+        </dt>
+        <dd> An alternative to sampling with temperature.</dd>
+        <dt class="optional">msg.presence_penalty
+            <span class="property-type">number</span>
+        </dt>
+        <dd> Number between <code>-2.0</code> and <code>2.0</code>. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.</dd>
+        <dt class="optional">msg.frequency_penalty
+            <span class="property-type">number</span>
+        </dt>
+        <dd> Number between <code>-2.0</code> and <code>2.0</code>. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.</dd>
+        <dt class="optional">msg.echo
+            <span class="property-type">boolean</span>
+        </dt>
+        <dd> Echo back the prompt in addition to the completion when set to <code>true</code>.</dd>
     </dl>
     <h3>Outputs</h3>
      <ol class="node-ports">
@@ -81,17 +109,20 @@
          </dl>
      </ol>
     <h3>Details</h3>
-    <p>Set <code>msg.topic</code> to a string with the value of <code>completion</code>, <code>image</code>, <code>edit</code>, or <code>turbo</code>.</p>
+    <p>Set <code>msg.topic</code> to a string with the value of <code>completion</code>, <code>image</code>, <code>edit</code>, <code>turbo</code>, or <code>gpt4</code>.</p>
     <p>1. If <code>msg.topic</code> is set to <code>completion</code>:</p>
     <p>Required <code>msg.payload</code> should be a well-written prompt that provides enough information for the model to know what you want and how it should respond. Its success generally depends on the complexity of the task and quality of your prompt. A good rule of thumb is to think about how you would write a word problem for a middle schooler to solve.</p>
     <p>2. If <code>msg.topic</code> is set to <code>image</code>:</p>
     <p>Required <code>msg.payload</code> should be a prompt of text description of the desired image.</p>
-    <p>Optional <code>msg.size</code> should be a string of the desired image dimensions. [Default:"256x256"]</p>
-    <p>Optional <code>msg.format</code> should be a string of either "b64_json" or "url". [Default:"b64_json"]</p>
+    <p>Optional <code>msg.size</code> should be a string of the desired image dimensions. [Default:<code>256x256</code>]</p>
+    <p>Optional <code>msg.format</code> should be a string of either <code>b64_json</code> or <code>url</code>. [Default:<code>b64_json</code>]</p>
     <p>3. If <code>msg.topic</code> is set to <code>edit</code>:</p>
     <p>Required <code>msg.payload</code> should be a prompt of text to use as a starting point for the edit.</p>
     <p>Required <code>msg.last</code> should be a string of text to use as the input to be edited.</p>
     <p>4. If <code>msg.topic</code> is set to <code>turbo</code>:</p>
-    <p>Required <code>msg.payload</code> should be a well-written prompt that provides enough information for the model to know what you want and how it should respond. Its success generally depends on the complexity of the task and quality of your prompt. A good rule of thumb is to think about how you would write a word problem for a middle schooler to solve.</p>
-    <p>Optional <code>msg.history</code> should be an array of objects containing the conversation history. [Default:[]]</p>
+    <p>Required <code>msg.payload</code> should be a well-written prompt.</p>
+    <p>Optional <code>msg.history</code> should be an array of objects containing the conversation history. [Default:<code>[]</code>]</p>
+    <p>5. If <code>msg.topic</code> is set to <code>gpt4</code>:</p>
+    <p>Required <code>msg.payload</code> should be a well-written prompt.</p>
+    <p>Optional <code>msg.history</code> should be an array of objects containing the conversation history. [Default:<code>[]</code>]</p>
  </script>

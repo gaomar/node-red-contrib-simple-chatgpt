@@ -22,7 +22,7 @@ To get your `Organization` visit https://platform.openai.com/account/org-setting
 
 ## Usage
 
-### Set `msg.topic` to a string with the value of `completion`, `image`, `edit`, or `turbo`.
+### Set `msg.topic` to a string with the value of `completion`, `image`, `edit`, `turbo` or `gpt4`.
 
 ### 1. If `msg.topic` is set to `completion`:
 
@@ -34,9 +34,9 @@ Its success generally depends on the complexity of the task and quality of your 
 
 [Required] `msg.payload` should be a prompt of text description of the desired image.
 
-[Optional] `msg.size` should be a string of the desired image dimensions. [Default:"256x256"]
+[Optional] `msg.size` should be a string of the desired image dimensions. [Default:`256x256`]
 
-[Optional] `msg.format` should be a string of either "b64_json" or "url". [Default:"b64_json"]
+[Optional] `msg.format` should be a string of either `b64_json` or `url`. [Default:`b64_json`]
 
 ### 3. If `msg.topic` is set to `edit`:
 
@@ -48,9 +48,22 @@ Its success generally depends on the complexity of the task and quality of your 
 
 [Required] `msg.payload` should be a well-written prompt that provides enough information for the model to know what you want and how it should respond.
 
-Its success generally depends on the complexity of the task and quality of your prompt. A good rule of thumb is to think about how you would write a word problem for a middle schooler to solve.
+Its success generally depends on the complexity of the task and quality of your prompt.
 
-[Optional] `msg.history` should be an array of objects containing the conversation history. [Default:[]]
+[Optional] `msg.history` should be an array of objects containing the conversation history. [Default:`[]`]
+
+### 5. If `msg.topic` is set to `gpt4`:
+
+[Required] `msg.payload` should be a well-written prompt that provides enough information for the model to know what you want and how it should respond.
+
+Its success generally depends on the complexity of the task and quality of your prompt.
+
+[Optional] `msg.history` should be an array of objects containing the conversation history. [Default:`[]`]
+
+
+#### Additional optional properties:
+
+The following optional inputs are supported - `msg.suffix`, `msg.n`, `msg.temperature`, `msg.top_p`, `msg.presence_penalty`, `msg.frequency_penalty`, and `msg.echo`. See the nodes built in help tab for more information on how they are used.
 
 ### Examples
 

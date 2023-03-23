@@ -1,6 +1,23 @@
 
 # Change Log
 
+## [1.2.3] - 2023-03-23
+
+### Added
+
+- Included preliminary support for for additional OpenAI model `gpt-4`. Set `msg.topic` to `gpt4` to select the new model. (untested, currently still on waitlist)
+- Included support for new message property `msg.suffix`, is expected to be a string that comes after a completion of inserted text.
+- Included support for new message property `msg.n`, is expected to be an number, the number of responses desired.
+- Included support for new message property `msg.temperature`, is expected to be an number, the sampling temperature to use.
+- Included support for new message property `msg.top_p`, is expected to be an number, an alternative to sampling with temperature.
+- Included support for new message property `msg.presence_penalty`, is expected to be an number, positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
+- Included support for new message property `msg.frequency_penalty`, is expected to be an number, positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.
+- Included support for new message property `msg.echo`, is expected to be a boolean, echos back the prompt in addition to the completion when set to `true`.
+
+### Changed
+
+- Improved help information displayed in the info tab of the editor
+
 ## [1.2.2] - 2023-03-10
 
 ### Changed
