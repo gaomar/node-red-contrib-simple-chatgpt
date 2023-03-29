@@ -1,6 +1,12 @@
 
 # Change Log
 
+## [1.2.6] - 2023-03-29
+
+### Changed
+
+- Removed unnecessary whitespace in node edit dialog.
+
 ## [1.2.5] - 2023-03-29
 
 ### Added
