@@ -22,7 +22,11 @@ To get your `Organization` visit https://platform.openai.com/account/org-setting
 
 ## Usage
 
-### Set `msg.topic` to a string with the value of `completion`, `image`, `edit`, `turbo` or `gpt4`.
+### Select the node's behavior by setting the Topic property value to `completion`, `image`, `edit`, `turbo` , or `gpt4`.
+
+Once set-up the node can be controlled with as little as a single required message property `msg.payload`.
+
+### Alternatively you can set the Topic to `read from msg.topic` to set the behavior dynamically with incoming messages, by setting `msg.topic` to a string with the value of `completion`, `image`, `edit`, `turbo` , or `gpt4`.
 
 ### 1. If `msg.topic` is set to `completion`:
 
@@ -63,7 +67,7 @@ Its success generally depends on the complexity of the task and quality of your 
 
 #### Additional optional properties:
 
-The following optional inputs are supported - `msg.suffix`, `msg.n`, `msg.temperature`, `msg.top_p`, `msg.presence_penalty`, `msg.frequency_penalty`, and `msg.echo`. See the nodes built in help tab for more information on how they are used.
+The following optional inputs are supported - `msg.max_tokens`, `msg.suffix`, `msg.n`, `msg.temperature`, `msg.top_p`, `msg.presence_penalty`, `msg.frequency_penalty`, and `msg.echo`. See the nodes built in help tab for more information on how they are used.
 
 ### Examples
 
@@ -73,8 +77,11 @@ The following optional inputs are supported - `msg.suffix`, `msg.n`, `msg.temper
 [Old screenshot] More advanced usage with templates.
 [<img src="/examples/example2.png">](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/blob/main/examples/chatgpt.json)
 
-[New screenshot] Usage of model `gpt-3.5-turbo` and conversation history.
+[Old screenshot] Usage of model `gpt-3.5-turbo` and conversation history.
 [<img src="/examples/example3.png">](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/blob/main/examples/chatgpt.json)
+
+[New screenshot] Updated example using optional message properties and setting behavior `Topic` in node edit dialog.
+[<img src="/examples/example4.png">](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/blob/main/examples/chatgpt.json)
 
 ## Links
 

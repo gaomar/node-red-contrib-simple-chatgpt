@@ -3,12 +3,12 @@ module.exports = (RED) => {
         Configuration,
         OpenAIApi
     } = require("openai");
+    const ACCEPT_TOPIC_LIST = ["completion", "image", "edit", "turbo", "gpt4"];
     const main = function (config) {
         const node = this;
         RED.nodes.createNode(node, config);
         const API_KEY = config.API_KEY;
         const ORGANIZATION = config.Organization;
-
         const configuration = new Configuration({
             organization: ORGANIZATION,
             apiKey: API_KEY,
@@ -21,20 +21,22 @@ module.exports = (RED) => {
                 shape: "dot",
                 text: "Processing..."
             });
-
-            if ((msg.topic != "completion") && (msg.topic != "image") && (msg.topic != "edit") && (msg.topic != "turbo") && (msg.topic != "gpt4")) {
+            if (config.topic != "__EMPTY__") {
+                msg.topic = config.topic;
+            };
+            if ((msg.topic != "completion") && (msg.topic != "image") && (msg.topic != "edit") && (msg.topic != "turbo") && (msg.topic != "gpt4") && (msg.topic != "__EMPTY__")) {
                 node.status({
                     fill: "red",
                     shape: "dot",
                     text: "msg.topic is incorrect"
                 });
-                node.error("msg.topic must be 'completion', 'image', 'edit', 'turbo' or 'gpt4'")
+                node.error(`msg.topic must be one of ${ACCEPT_TOPIC_LIST.map(item => ` '${item}' `).join(", ")}`)
                 node.send(msg)
             } else if (msg.topic === "image") {
                 try {
                     const response = await openai.createImage({
                         prompt: msg.payload,
-                        n: msg.n || 1,
+                        n: parseInt(msg.n) || 1,
                         size: msg.size || "256x256",
                         response_format: msg.format || "b64_json",
                     });
@@ -69,10 +71,10 @@ module.exports = (RED) => {
                     const response = await openai.createEdit({
                         model: "text-davinci-edit-001",
                         instruction: msg.payload,
-                        n: msg.n || 1,
+                        n: parseInt(msg.n) || 1,
                         input: msg.last || "",
-                        temperature: msg.temperature || 1,
-                        top_p: msg.top_p || 1
+                        temperature: parseInt(msg.temperature) || 1,
+                        top_p: parseInt(msg.top_p) || 1
                     });
                     msg.payload = response.data.choices[0].text;
                     msg.full = response;
@@ -108,14 +110,14 @@ module.exports = (RED) => {
                     const response = await openai.createChatCompletion({
                         model: "gpt-3.5-turbo",
                         messages: msg.history,
-                        temperature: msg.temperature || 1,
-                        top_p: msg.top_p || 1,
-                        n: msg.n || 1,
+                        temperature: parseInt(msg.temperature) || 1,
+                        top_p: parseInt(msg.top_p) || 1,
+                        n: parseInt(msg.n) || 1,
                         stream: msg.stream || false,
                         stop: msg.stop || null,
-                        max_tokens: msg.max_tokens || 4000,
-                        presence_penalty: msg.presence_penalty || 0,
-                        frequency_penalty: msg.frequency_penalty || 0
+                        max_tokens: parseInt(msg.max_tokens) || 4000,
+                        presence_penalty: parseInt(msg.presence_penalty) || 0,
+                        frequency_penalty: parseInt(msg.frequency_penalty) || 0
                     });
                     const trimmedContent = response.data.choices[0].message.content.trim();
                     const result = {
@@ -157,14 +159,14 @@ module.exports = (RED) => {
                     const response = await openai.createChatCompletion({
                         model: "gpt-4",
                         messages: msg.history,
-                        temperature: msg.temperature || 1,
-                        top_p: msg.top_p || 1,
-                        n: msg.n || 1,
+                        temperature: parseInt(msg.temperature) || 1,
+                        top_p: parseInt(msg.top_p) || 1,
+                        n: parseInt(msg.n) || 1,
                         stream: msg.stream || false,
                         stop: msg.stop || null,
-                        max_tokens: msg.max_tokens || 4000,
-                        presence_penalty: msg.presence_penalty || 0,
-                        frequency_penalty: msg.frequency_penalty || 0
+                        max_tokens: parseInt(msg.max_tokens) || 4000,
+                        presence_penalty: parseInt(msg.presence_penalty) || 0,
+                        frequency_penalty: parseInt(msg.frequency_penalty) || 0
                     });
                     const trimmedContent = response.data.choices[0].message.content.trim();
                     const result = {
@@ -200,17 +202,17 @@ module.exports = (RED) => {
                         model: "text-davinci-003",
                         prompt: msg.payload,
                         suffix: msg.suffix || null,
-                        max_tokens: msg.max_tokens || 4000,
-                        temperature: msg.temperature || 1,
-                        top_p: msg.top_p || 1,
-                        n: msg.n || 1,
+                        max_tokens: parseInt(msg.max_tokens) || 4000,
+                        temperature: parseInt(msg.temperature) || 1,
+                        top_p: parseInt(msg.top_p) || 1,
+                        n: parseInt(msg.n) || 1,
                         stream: msg.stream || false,
                         logprobs: msg.logprobs || null,
                         echo: msg.echo || false,
                         stop: msg.stop || null,
-                        presence_penalty: msg.presence_penalty || 0,
-                        frequency_penalty: msg.frequency_penalty || 0,
-                        best_of: msg.best_of || 1
+                        presence_penalty: parseInt(msg.presence_penalty) || 0,
+                        frequency_penalty: parseInt(msg.frequency_penalty) || 0,
+                        best_of: parseInt(msg.best_of) || 1
                     });
                     msg.payload = response.data.choices[0].text;
                     msg.full = response;

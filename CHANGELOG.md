@@ -1,6 +1,17 @@
 
 # Change Log
 
+## [1.2.4] - 2023-03-28
+
+### Added
+
+- Included the ability to set the behavior Topic in the node's edit dialog. Once set-up the node can be controlled with as little as a single required message property `msg.payload`. Behavior can still be set dynamically by selecting `read from msg.topic` and setting the `msg.topic` to the desired behavior.
+
+### Changed
+
+- Updated help information displayed in the info tab of the editor (`msg.max_tokens` support is now documented)
+- Updated the included example to demonstrate new features
+
 ## [1.2.3] - 2023-03-23
 
 ### Added

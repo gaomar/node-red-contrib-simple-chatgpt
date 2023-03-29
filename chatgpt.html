@@ -3,19 +3,34 @@
         category: 'ChatGPT',
         color: '#10A37F',
         defaults: {
-            name: {value: ""},
-            API_KEY: {value: "", required:true},
-            Organization: {value: "", required:true},
+            name: { value: "" },
+            API_KEY: { value: "", required: true },
+            Organization: { value: "", required: true },
+            topic: { value: ""},
         },
         inputs:1,
         outputs:1,
         icon: "arrow-in.png",
         label: function() {
             return this.name||"chatgpt";
-        }
+        },
+        oneditprepare: function () {
+            const node = this;
+            $('#node-input-topic').typedInput({type:"topic", types:[{
+                value: "topic",
+                options: [
+                    { value: "completion", label: "completion"},
+                    { value: "edit", label: "edit"},
+                    { value: "image", label: "image"},
+                    { value: "turbo", label: "turbo"},
+                    { value: "gpt4", label: "gpt4"},
+                    { value: "__EMPTY__", label: "read from msg.topic"},
+                ],
+            }]});
+        },
     });
- </script>
- <script type="text/html" data-template-name="chatgpt">
+</script>
+<script type="text/html" data-template-name="chatgpt">
     <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
@@ -34,8 +49,14 @@
         </label>
         <input type="text" id="node-input-Organization" placeholder="organization">
     </div>
- </script>
- <script type="text/html" data-help-name="chatgpt">
+    <div class="form-row">
+        <label for="node-input-topic"><i class="fa icon-tag"></i>
+            Topic
+        </label>
+        <input type="text" id="node-input-topic" />
+    </div>
+</script>
+<script type="text/html" data-help-name="chatgpt">
     <h1>Description</h1>
     <p>A Node-RED node that interacts with OpenAI machine learning models like <a href="https://chat.openai.com/chat">ChatGPT</a>.</p>
     <h2>Setup</h2>
@@ -96,20 +117,25 @@
             <span class="property-type">boolean</span>
         </dt>
         <dd> Echo back the prompt in addition to the completion when set to <code>true</code>.</dd>
+        <dt class="optional">msg.max_tokens
+            <span class="property-type">number</span>
+        </dt>
+        <dd> The token count of your prompt plus <code>max_tokens</code> cannot exceed the model's context length. Most models have a context length of <code>2048</code> tokens (except for the newest models, which support <code>4096</code>)</dd>
     </dl>
     <h3>Outputs</h3>
-     <ol class="node-ports">
-         <dl class="message-properties">
-             <dt>msg.payload <span class="property-type">string</span></dt>
-             <dd>The output of the selected model based on the input prompt.</dd>
-             <dt>msg.full <span class="property-type">object</span></dt>
-             <dd>The full response object of the selected model.</dd>
-             <dt>msg.history <span class="property-type">array</span></dt>
-             <dd>The conversation history.</dd>
-         </dl>
-     </ol>
+    <ol class="node-ports">
+        <dl class="message-properties">
+            <dt>msg.payload <span class="property-type">string</span></dt>
+            <dd>The output of the selected model based on the input prompt.</dd>
+            <dt>msg.full <span class="property-type">object</span></dt>
+            <dd>The full response object of the selected model.</dd>
+            <dt>msg.history <span class="property-type">array</span></dt>
+            <dd>The conversation history.</dd>
+        </dl>
+    </ol>
     <h3>Details</h3>
-    <p>Set <code>msg.topic</code> to a string with the value of <code>completion</code>, <code>image</code>, <code>edit</code>, <code>turbo</code>, or <code>gpt4</code>.</p>
+    <p>Select the node's behavior by setting the Topic property value to <code>completion</code>, <code>edit</code>, <code>image</code>, <code>turbo</code>, or <code>gpt4</code>.</p>
+    <p>Alternatively you can set the Topic to <code>read from msg.topic</code> to set the behavior dynamically with incoming messages, by setting <code>msg.topic</code> to a string with the value of <code>completion</code>, <code>edit</code>, <code>image</code>, <code>turbo</code>, or <code>gpt4</code>.</p>
     <p>1. If <code>msg.topic</code> is set to <code>completion</code>:</p>
     <p>Required <code>msg.payload</code> should be a well-written prompt that provides enough information for the model to know what you want and how it should respond. Its success generally depends on the complexity of the task and quality of your prompt. A good rule of thumb is to think about how you would write a word problem for a middle schooler to solve.</p>
     <p>2. If <code>msg.topic</code> is set to <code>image</code>:</p>

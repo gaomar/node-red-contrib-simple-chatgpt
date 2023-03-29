@@ -1,6 +1,6 @@
 [
     {
-        "id": "99a8aaa6537c5607",
+        "id": "acb2bb816d7b454b",
         "type": "tab",
         "label": "ChatGPT",
         "disabled": false,
@@ -8,36 +8,37 @@
         "env": []
     },
     {
-        "id": "cf8441cceeb9d2e6",
+        "id": "86084a135dacac68",
         "type": "junction",
-        "z": "99a8aaa6537c5607",
-        "x": 680,
+        "z": "acb2bb816d7b454b",
+        "x": 760,
         "y": 520,
         "wires": [
             [
-                "b6e05a45d6937c30"
+                "1c5ba459c4b101f3"
             ]
         ]
     },
     {
-        "id": "59cb2749b4b21764",
+        "id": "c4f9dfdbd5d26711",
         "type": "chatgpt",
-        "z": "99a8aaa6537c5607",
+        "z": "acb2bb816d7b454b",
         "name": "",
         "API_KEY": "",
         "Organization": "",
-        "x": 460,
+        "topic": "completion",
+        "x": 520,
         "y": 140,
         "wires": [
             [
-                "e4458f17c29a5ca0"
+                "64dc49cdfc7ad13d"
             ]
         ]
     },
     {
-        "id": "42d0dc13386dc408",
+        "id": "4a4e42e0b484e289",
         "type": "inject",
-        "z": "99a8aaa6537c5607",
+        "z": "acb2bb816d7b454b",
         "name": "completion:Write a story about a dog",
         "props": [
             {
@@ -55,18 +56,18 @@
         "topic": "completion",
         "payload": "Write a story about a dog",
         "payloadType": "str",
-        "x": 200,
+        "x": 260,
         "y": 100,
         "wires": [
             [
-                "59cb2749b4b21764"
+                "c4f9dfdbd5d26711"
             ]
         ]
     },
     {
-        "id": "b311e53c8cc6e850",
+        "id": "ca6ee265beb31a91",
         "type": "inject",
-        "z": "99a8aaa6537c5607",
+        "z": "acb2bb816d7b454b",
         "name": "image:a simple bird",
         "props": [
             {
@@ -94,36 +95,36 @@
         "topic": "image",
         "payload": "a simple bird",
         "payloadType": "str",
-        "x": 250,
+        "x": 310,
         "y": 180,
         "wires": [
             [
-                "59cb2749b4b21764"
+                "c4f9dfdbd5d26711"
             ]
         ]
     },
     {
-        "id": "39716035ecafb63e",
+        "id": "b692c28e07980c8e",
         "type": "image viewer",
-        "z": "99a8aaa6537c5607",
+        "z": "acb2bb816d7b454b",
         "name": "",
         "width": "1024",
         "data": "payload",
         "dataType": "msg",
         "active": true,
-        "x": 770,
+        "x": 850,
         "y": 180,
         "wires": [
             [
-                "d34d8873061a0dc5"
+                "7ec2cd9208f12a67"
             ]
         ]
     },
     {
-        "id": "d34d8873061a0dc5",
+        "id": "7ec2cd9208f12a67",
         "type": "debug",
-        "z": "99a8aaa6537c5607",
-        "name": "debug images response",
+        "z": "acb2bb816d7b454b",
+        "name": "debug image response",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -132,14 +133,14 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1210,
+        "x": 1260,
         "y": 180,
         "wires": []
     },
     {
-        "id": "bddef048a8549801",
+        "id": "954361944f45a4d0",
         "type": "inject",
-        "z": "99a8aaa6537c5607",
+        "z": "acb2bb816d7b454b",
         "name": "edit:reverse the text",
         "props": [
             {
@@ -160,20 +161,20 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "edit",
-        "payload": "2",
+        "payload": "reverse the text",
         "payloadType": "str",
-        "x": 250,
+        "x": 310,
         "y": 140,
         "wires": [
             [
-                "59cb2749b4b21764"
+                "c4f9dfdbd5d26711"
             ]
         ]
     },
     {
-        "id": "42101fde0556c447",
+        "id": "86fef8c1176f9ff4",
         "type": "change",
-        "z": "99a8aaa6537c5607",
+        "z": "acb2bb816d7b454b",
         "name": "",
         "rules": [
             {
@@ -190,18 +191,18 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 930,
+        "x": 990,
         "y": 100,
         "wires": [
             [
-                "0b878430dc63a7b8"
+                "081ed79769ffd2e7"
             ]
         ]
     },
     {
-        "id": "e4458f17c29a5ca0",
+        "id": "64dc49cdfc7ad13d",
         "type": "switch",
-        "z": "99a8aaa6537c5607",
+        "z": "acb2bb816d7b454b",
         "name": "",
         "property": "topic",
         "propertyType": "msg",
@@ -223,34 +224,48 @@
             },
             {
                 "t": "eq",
+                "v": "gpt4",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
                 "v": "image",
                 "vt": "str"
+            },
+            {
+                "t": "else"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 4,
-        "x": 610,
+        "outputs": 6,
+        "x": 670,
         "y": 140,
         "wires": [
             [
-                "343a403cc2c27bd8"
+                "b9b7dc205872f024"
             ],
             [
-                "343a403cc2c27bd8"
+                "b9b7dc205872f024"
             ],
             [
-                "62231254eed45f65"
+                "85d74e8b17c775c4"
             ],
             [
-                "39716035ecafb63e"
+                "85d74e8b17c775c4"
+            ],
+            [
+                "b692c28e07980c8e"
+            ],
+            [
+                "27b0d5836f1360ec"
             ]
         ]
     },
     {
-        "id": "343a403cc2c27bd8",
+        "id": "b9b7dc205872f024",
         "type": "string",
-        "z": "99a8aaa6537c5607",
+        "z": "acb2bb816d7b454b",
         "name": "",
         "methods": [
             {
@@ -262,19 +277,19 @@
         "propout": "payload",
         "object": "msg",
         "objectout": "msg",
-        "x": 770,
+        "x": 850,
         "y": 100,
         "wires": [
             [
-                "42101fde0556c447"
+                "86fef8c1176f9ff4"
             ]
         ]
     },
     {
-        "id": "0b878430dc63a7b8",
+        "id": "081ed79769ffd2e7",
         "type": "debug",
-        "z": "99a8aaa6537c5607",
-        "name": "debug completions/edits/templates response",
+        "z": "acb2bb816d7b454b",
+        "name": "debug completion/edit response",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -283,14 +298,14 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1270,
+        "x": 1290,
         "y": 100,
         "wires": []
     },
     {
-        "id": "198163aeec14e576",
+        "id": "7947221db9519f9a",
         "type": "template",
-        "z": "99a8aaa6537c5607",
+        "z": "acb2bb816d7b454b",
         "name": "proofread input",
         "field": "payload",
         "fieldType": "msg",
@@ -298,18 +313,18 @@
         "syntax": "mustache",
         "template": "Proofread the following text: `{{payload}}`",
         "output": "str",
-        "x": 480,
+        "x": 560,
         "y": 520,
         "wires": [
             [
-                "cf8441cceeb9d2e6"
+                "86084a135dacac68"
             ]
         ]
     },
     {
-        "id": "308cd815a995015b",
+        "id": "5362b83c594b3902",
         "type": "inject",
-        "z": "99a8aaa6537c5607",
+        "z": "acb2bb816d7b454b",
         "name": "input text to proofread",
         "props": [
             {
@@ -323,19 +338,19 @@
         "topic": "",
         "payload": "I ate some apples four dinner last thursday. they were very good.",
         "payloadType": "str",
-        "x": 240,
+        "x": 300,
         "y": 520,
         "wires": [
             [
-                "198163aeec14e576"
+                "7947221db9519f9a"
             ]
         ]
     },
     {
-        "id": "8de0c5dd9078ba04",
+        "id": "27b0d5836f1360ec",
         "type": "debug",
-        "z": "99a8aaa6537c5607",
-        "name": "debug prompt templates",
+        "z": "acb2bb816d7b454b",
+        "name": "debug prompt outputs",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -344,14 +359,14 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 510,
-        "y": 460,
+        "x": 580,
+        "y": 220,
         "wires": []
     },
     {
-        "id": "3cbeac4446f56a98",
+        "id": "513138ef8ff6dd29",
         "type": "template",
-        "z": "99a8aaa6537c5607",
+        "z": "acb2bb816d7b454b",
         "name": "generate d&d npc description",
         "field": "payload",
         "fieldType": "msg",
@@ -359,18 +374,18 @@
         "syntax": "mustache",
         "template": "Generate a high-quality Dungeons and Dragons NPC named {{name}} that is a {{gender}} {{race}} {{class}} {{occupation}}.",
         "output": "str",
-        "x": 520,
+        "x": 600,
         "y": 560,
         "wires": [
             [
-                "cf8441cceeb9d2e6"
+                "86084a135dacac68"
             ]
         ]
     },
     {
-        "id": "b6e05a45d6937c30",
+        "id": "1c5ba459c4b101f3",
         "type": "change",
-        "z": "99a8aaa6537c5607",
+        "z": "acb2bb816d7b454b",
         "name": "set msg.topic to completion",
         "rules": [
             {
@@ -386,19 +401,19 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 220,
+        "x": 280,
         "y": 460,
         "wires": [
             [
-                "59cb2749b4b21764",
-                "8de0c5dd9078ba04"
+                "c4f9dfdbd5d26711",
+                "53b05f881b1497c2"
             ]
         ]
     },
     {
-        "id": "aa95d33144d4bd6a",
+        "id": "b54243750128cf7c",
         "type": "template",
-        "z": "99a8aaa6537c5607",
+        "z": "acb2bb816d7b454b",
         "name": "generate d&d npc stat block",
         "field": "payload",
         "fieldType": "msg",
@@ -406,18 +421,18 @@
         "syntax": "mustache",
         "template": "Generate a {{format}} for a high-quality Dungeons and Dragons 5e NPC that is a level {{level}} {{gender}} {{race}} {{class}} {{occupation}}.",
         "output": "str",
-        "x": 520,
+        "x": 600,
         "y": 600,
         "wires": [
             [
-                "cf8441cceeb9d2e6"
+                "86084a135dacac68"
             ]
         ]
     },
     {
-        "id": "136e02a3a2c46997",
+        "id": "de3c52ae9c0d7262",
         "type": "inject",
-        "z": "99a8aaa6537c5607",
+        "z": "acb2bb816d7b454b",
         "name": "input npc characteristics",
         "props": [
             {
@@ -461,18 +476,18 @@
         "topic": "",
         "payload": "",
         "payloadType": "str",
-        "x": 240,
+        "x": 300,
         "y": 600,
         "wires": [
             [
-                "aa95d33144d4bd6a"
+                "b54243750128cf7c"
             ]
         ]
     },
     {
-        "id": "5c5d8d2917dbea0e",
+        "id": "d4171b19f095210f",
         "type": "inject",
-        "z": "99a8aaa6537c5607",
+        "z": "acb2bb816d7b454b",
         "name": "input npc characteristics",
         "props": [
             {
@@ -516,19 +531,19 @@
         "topic": "",
         "payload": "",
         "payloadType": "str",
-        "x": 240,
+        "x": 300,
         "y": 560,
         "wires": [
             [
-                "3cbeac4446f56a98"
+                "513138ef8ff6dd29"
             ]
         ]
     },
     {
-        "id": "012cb585da4a47d2",
+        "id": "775f1d12592ed6dd",
         "type": "inject",
-        "z": "99a8aaa6537c5607",
-        "name": "turbo:Write a story about a Elephant",
+        "z": "acb2bb816d7b454b",
+        "name": "turbo:Write a story about an Elephant",
         "props": [
             {
                 "p": "payload"
@@ -548,20 +563,20 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "turbo",
-        "payload": "Change it to be about a Elephant.",
+        "payload": "Write a story about an Elephant.",
         "payloadType": "str",
-        "x": 200,
+        "x": 250,
         "y": 280,
         "wires": [
             [
-                "59cb2749b4b21764"
+                "c4f9dfdbd5d26711"
             ]
         ]
     },
     {
-        "id": "e10a1535e6f2603e",
+        "id": "bb68b4b88105b176",
         "type": "change",
-        "z": "99a8aaa6537c5607",
+        "z": "acb2bb816d7b454b",
         "name": "set flow.last & flow.history",
         "rules": [
             {
@@ -586,18 +601,18 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 970,
+        "x": 1030,
         "y": 140,
         "wires": [
             [
-                "a5b7d220495f8ee3"
+                "78967db3112b3747"
             ]
         ]
     },
     {
-        "id": "62231254eed45f65",
+        "id": "85d74e8b17c775c4",
         "type": "string",
-        "z": "99a8aaa6537c5607",
+        "z": "acb2bb816d7b454b",
         "name": "",
         "methods": [
             {
@@ -609,19 +624,19 @@
         "propout": "payload",
         "object": "msg",
         "objectout": "msg",
-        "x": 770,
+        "x": 850,
         "y": 140,
         "wires": [
             [
-                "e10a1535e6f2603e"
+                "bb68b4b88105b176"
             ]
         ]
     },
     {
-        "id": "a5b7d220495f8ee3",
+        "id": "78967db3112b3747",
         "type": "debug",
-        "z": "99a8aaa6537c5607",
-        "name": "debug \"gpt-3.5-turbo-0301\" response",
+        "z": "acb2bb816d7b454b",
+        "name": "debug \"turbo-gpt4\" response",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -630,14 +645,14 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1250,
+        "x": 1280,
         "y": 140,
         "wires": []
     },
     {
-        "id": "aae49618ba869fd5",
+        "id": "4a62f73d7954a1d6",
         "type": "change",
-        "z": "99a8aaa6537c5607",
+        "z": "acb2bb816d7b454b",
         "name": "reset flow.history",
         "rules": [
             {
@@ -654,18 +669,18 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 470,
+        "x": 550,
         "y": 40,
         "wires": [
             [
-                "71bbba7912a2e68b"
+                "721e7348f388d550"
             ]
         ]
     },
     {
-        "id": "1a948b8cef88d3b7",
+        "id": "5d94b959d077a956",
         "type": "inject",
-        "z": "99a8aaa6537c5607",
+        "z": "acb2bb816d7b454b",
         "name": "Reset convesation history",
         "props": [
             {
@@ -688,18 +703,18 @@
         "topic": "turbo",
         "payload": "",
         "payloadType": "str",
-        "x": 230,
+        "x": 290,
         "y": 40,
         "wires": [
             [
-                "aae49618ba869fd5"
+                "4a62f73d7954a1d6"
             ]
         ]
     },
     {
-        "id": "71bbba7912a2e68b",
+        "id": "721e7348f388d550",
         "type": "debug",
-        "z": "99a8aaa6537c5607",
+        "z": "acb2bb816d7b454b",
         "name": "debug reset",
         "active": true,
         "tosidebar": true,
@@ -709,14 +724,14 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1170,
+        "x": 1230,
         "y": 40,
         "wires": []
     },
     {
-        "id": "f93138b63cf443e3",
+        "id": "d5d45a15de65ea5f",
         "type": "inject",
-        "z": "99a8aaa6537c5607",
+        "z": "acb2bb816d7b454b",
         "name": "turbo:Change it to be about a dog.",
         "props": [
             {
@@ -739,42 +754,342 @@
         "topic": "turbo",
         "payload": "Change it to be about a dog.",
         "payloadType": "str",
-        "x": 200,
+        "x": 260,
         "y": 360,
         "wires": [
             [
-                "59cb2749b4b21764"
+                "c4f9dfdbd5d26711"
             ]
         ]
     },
     {
-        "id": "a0a2360f8d0cf2fb",
+        "id": "cea4aa1bc33d8e8f",
         "type": "comment",
-        "z": "99a8aaa6537c5607",
+        "z": "acb2bb816d7b454b",
         "name": "Using templates to preset model behavior",
         "info": "",
-        "x": 180,
+        "x": 240,
         "y": 420,
         "wires": []
     },
     {
-        "id": "2f5cd362ab11c50b",
+        "id": "26965055703e793c",
         "type": "comment",
-        "z": "99a8aaa6537c5607",
+        "z": "acb2bb816d7b454b",
         "name": "Starting a conversation [turbo]",
         "info": "",
-        "x": 220,
+        "x": 280,
         "y": 240,
         "wires": []
     },
     {
-        "id": "8b9aaa67d3a22823",
+        "id": "e0522446ea1b2da3",
         "type": "comment",
-        "z": "99a8aaa6537c5607",
+        "z": "acb2bb816d7b454b",
         "name": "Continuing a conversation [turbo]",
         "info": "",
-        "x": 210,
+        "x": 270,
         "y": 320,
         "wires": []
+    },
+    {
+        "id": "35fc5b252e1a5748",
+        "type": "inject",
+        "z": "acb2bb816d7b454b",
+        "name": "set chatgpt node Topic to `completion` then test",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Write a story about a dog",
+        "payloadType": "str",
+        "x": 220,
+        "y": 840,
+        "wires": [
+            [
+                "c4f9dfdbd5d26711"
+            ]
+        ]
+    },
+    {
+        "id": "5f1abed24f071a98",
+        "type": "inject",
+        "z": "acb2bb816d7b454b",
+        "name": "set chatgpt node Topic to `image` then test",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "a simple bird",
+        "payloadType": "str",
+        "x": 240,
+        "y": 920,
+        "wires": [
+            [
+                "c4f9dfdbd5d26711"
+            ]
+        ]
+    },
+    {
+        "id": "949ea24392a47f31",
+        "type": "inject",
+        "z": "acb2bb816d7b454b",
+        "name": "set chatgpt node Topic to `edit` then test",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "last",
+                "v": "last",
+                "vt": "flow"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Reverse the following text ",
+        "payloadType": "str",
+        "x": 250,
+        "y": 880,
+        "wires": [
+            [
+                "c4f9dfdbd5d26711"
+            ]
+        ]
+    },
+    {
+        "id": "db32505ba2d95fa3",
+        "type": "comment",
+        "z": "acb2bb816d7b454b",
+        "name": "Set Topic in node edit dialog first",
+        "info": "",
+        "x": 270,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "53b05f881b1497c2",
+        "type": "debug",
+        "z": "acb2bb816d7b454b",
+        "name": "debug prompt inputs",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "f0156e46f013f9cd",
+        "type": "inject",
+        "z": "acb2bb816d7b454b",
+        "name": "completion:Write a story about a msg.suffix",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "suffix",
+                "v": "dog",
+                "vt": "str"
+            },
+            {
+                "p": "n",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "p": "temperature",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "p": "presence_penalty",
+                "v": "0.2",
+                "vt": "num"
+            },
+            {
+                "p": "frequency_penalty",
+                "v": "0.2",
+                "vt": "num"
+            },
+            {
+                "p": "best_of",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "p": "max_tokens",
+                "v": "3000",
+                "vt": "num"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "completion",
+        "payload": "Write a story about a ",
+        "payloadType": "str",
+        "x": 240,
+        "y": 700,
+        "wires": [
+            [
+                "c4f9dfdbd5d26711"
+            ]
+        ]
+    },
+    {
+        "id": "f0f036eaedeee02c",
+        "type": "comment",
+        "z": "acb2bb816d7b454b",
+        "name": "Using optional message properties",
+        "info": "",
+        "x": 260,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "6a40a782c5e2a882",
+        "type": "inject",
+        "z": "acb2bb816d7b454b",
+        "name": "completion:Write a story about a dog",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "n",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "p": "top_p",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "p": "presence_penalty",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "p": "frequency_penalty",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "p": "echo",
+                "v": "true",
+                "vt": "bool"
+            },
+            {
+                "p": "max_tokens",
+                "v": "3000",
+                "vt": "num"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "completion",
+        "payload": "Write a story about a dog",
+        "payloadType": "str",
+        "x": 260,
+        "y": 740,
+        "wires": [
+            [
+                "c4f9dfdbd5d26711"
+            ]
+        ]
+    },
+    {
+        "id": "71fe4d1fbbecd759",
+        "type": "inject",
+        "z": "acb2bb816d7b454b",
+        "name": "set chatgpt node Topic to `turbo` then test",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "max_tokens",
+                "v": "3000",
+                "vt": "num"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Respond only with valid JavaScript syntax, generate a minimized JavaScript function that calculates the average of an array of numbers. The function should take an array of numbers as input and return the average as output. The generated code should be a self-contained function that can be used directly in the next Node-RED node. The function should take a single parameter, which is an array of numbers, and return the average of the numbers in the array. It should not rely on external dependencies or global variables.",
+        "payloadType": "str",
+        "x": 240,
+        "y": 960,
+        "wires": [
+            [
+                "c4f9dfdbd5d26711"
+            ]
+        ]
+    },
+    {
+        "id": "601eb14380de5503",
+        "type": "inject",
+        "z": "acb2bb816d7b454b",
+        "name": "set chatgpt node Topic to `gpt4` then test",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "max_tokens",
+                "v": "3000",
+                "vt": "num"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Respond only with valid JavaScript syntax, generate a minimized JavaScript function that calculates the average of an array of numbers. The function should take an array of numbers as input and return the average as output. The generated code should be a self-contained function that can be used directly in the next Node-RED node. The function should take a single parameter, which is an array of numbers, and return the average of the numbers in the array. It should not rely on external dependencies or global variables.",
+        "payloadType": "str",
+        "x": 240,
+        "y": 1000,
+        "wires": [
+            [
+                "c4f9dfdbd5d26711"
+            ]
+        ]
     }
 ]
