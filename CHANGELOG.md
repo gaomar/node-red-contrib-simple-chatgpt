@@ -1,6 +1,12 @@
 
 # Change Log
 
+## [1.2.7] - 2023-03-29
+
+### Changed
+
+- Fixed properly setting `msg.topic` to lowecase characters.
+
 ## [1.2.6] - 2023-03-29
 
 ### Changed
@@ -17,7 +23,7 @@
 
 - Updated help information displayed in the info tab of the editor. (less verbose "details" section)
 - Updated error message and removed unnecessary whitespace.
-- Updated `README.md` formating and usage information.
+- Updated `README.md` formatting and usage information.
 
 ## [1.2.4] - 2023-03-28
 

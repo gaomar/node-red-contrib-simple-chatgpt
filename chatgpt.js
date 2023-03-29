@@ -25,7 +25,7 @@ module.exports = (RED) => {
                 msg.topic = config.topic;
             };
             if (msg.topic) {
-                msg.topic.toLowerCase();
+                 msg.topic = msg.topic.toLowerCase();
             };
             if (!ACCEPT_TOPIC_LIST.includes(msg.topic) && msg.topic !== "__empty__") {
                 node.status({
@@ -210,7 +210,7 @@ module.exports = (RED) => {
                         top_p: parseInt(msg.top_p) || 1,
                         n: parseInt(msg.n) || 1,
                         stream: msg.stream || false,
-                        logprobs: msg.logprobs || null,
+                        logprobs: parseInt(msg.logprobs) || null,
                         echo: msg.echo || false,
                         stop: msg.stop || null,
                         presence_penalty: parseInt(msg.presence_penalty) || 0,
