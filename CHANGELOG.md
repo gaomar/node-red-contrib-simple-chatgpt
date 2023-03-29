@@ -5,7 +5,7 @@
 
 ### Changed
 
-- Fixed properly setting `msg.topic` to lowecase characters.
+- Fixed properly setting `msg.topic` to lowercase characters.
 
 ## [1.2.6] - 2023-03-29
 
