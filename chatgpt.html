@@ -30,6 +30,7 @@
         },
     });
 </script>
+
 <script type="text/html" data-template-name="chatgpt">
     <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
@@ -57,99 +58,133 @@
         <input type="text" id="node-input-topic" />
     </div>
 </script>
+
 <script type="text/html" data-help-name="chatgpt">
+
     <h1>Description</h1>
-    <p>A Node-RED node that interacts with OpenAI machine learning models to generate text and image outputs like <a href="https://chat.openai.com/chat">ChatGPT</a> and <a href="https://openai.com/product/dall-e-2">DALL·E 2</a>.</p>
+        <p>A Node-RED node that interacts with OpenAI machine learning models to generate text and image outputs like <a href="https://chat.openai.com/chat">ChatGPT</a> and <a href="https://openai.com/product/dall-e-2">DALL·E 2</a>.</p>
+    
     <h2>Setup</h2>
-    <p>When editing the nodes properties, to get your <code>OPENAI_API_KEY</code> log in to <a href="https://chat.openai.com/chat">ChatGPT</a> then visit <a href="https://platform.openai.com/account/api-keys">https://platform.openai.com/account/api-keys</a> click "+ Create new secret key" then copy and paste the "API key" into the nodes <code>API_KEY</code> property value.</p>
-    <p>To get your <code>Organization</code> visit <a href="https://platform.openai.com/account/org-settings">https://platform.openai.com/account/org-settings</a> then copy and paste the "OrganizationID" into the nodes <code>Organization</code> property value.</p>
+        <p>When editing the nodes properties, to get your <code>OPENAI_API_KEY</code> log in to <a href="https://chat.openai.com/chat">ChatGPT</a> then visit <a href="https://platform.openai.com/account/api-keys">https://platform.openai.com/account/api-keys</a> click "+ Create new secret key" then copy and paste the "API key" into the nodes <code>API_KEY</code> property value.</p>
+        <p>To get your <code>Organization</code> visit <a href="https://platform.openai.com/account/org-settings">https://platform.openai.com/account/org-settings</a> then copy and paste the "OrganizationID" into the nodes <code>Organization</code> property value.</p>
     
     <h3>Inputs</h3>
-    <dl class="message-properties">
-        <dt>msg.payload
-            <span class="property-type">string</span>
-        </dt>
-        <dd> The prompt to input into the model. </dd>
-        <dt class="optional">msg.topic
-            <span class="property-type">string</span>
-        </dt>
-        <dd> The topic and node behavior to select.</dd>
-        <dt class="optional">msg.size
-            <span class="property-type">string</span>
-        </dt>
-        <dd> The desired image dimensions.</dd>
-        <dt class="optional">msg.format
-            <span class="property-type">string</span>
-        </dt>
-        <dd> The desired image output format.</dd>
-        <dt class="optional">msg.last
-            <span class="property-type">string</span>
-        </dt>
-        <dd> The input to be edited.</dd>
-        <dt class="optional">msg.suffix
-            <span class="property-type">string</span>
-        </dt>
-        <dd> The suffix that comes after a completion of inserted text.</dd>
-        <dt class="optional">msg.history
-            <span class="property-type">array</span>
-        </dt>
-        <dd> The conversation history.</dd> 
-        <dt class="optional">msg.n
-            <span class="property-type">number</span>
-        </dt>
-        <dd> The number of responses desired.</dd>
-        <dt class="optional">msg.temperature
-            <span class="property-type">number</span>
-        </dt>
-        <dd> The sampling temperature to use, between <code>0</code> and <code>2</code>. Higher values like <code>0.8</code> will make the output more random, while lower values like <code>0.2</code> will make it more focused and deterministic.</dd>
-        <dt class="optional">msg.top_p
-            <span class="property-type">number</span>
-        </dt>
-        <dd> An alternative to sampling with temperature.</dd>
-        <dt class="optional">msg.presence_penalty
-            <span class="property-type">number</span>
-        </dt>
-        <dd> Number between <code>-2.0</code> and <code>2.0</code>. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.</dd>
-        <dt class="optional">msg.frequency_penalty
-            <span class="property-type">number</span>
-        </dt>
-        <dd> Number between <code>-2.0</code> and <code>2.0</code>. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.</dd>
-        <dt class="optional">msg.echo
-            <span class="property-type">boolean</span>
-        </dt>
-        <dd> Echo back the prompt in addition to the completion when set to <code>true</code>.</dd>
-        <dt class="optional">msg.max_tokens
-            <span class="property-type">number</span>
-        </dt>
-        <dd> The token count of your prompt plus <code>max_tokens</code> cannot exceed the model's context length. Most models have a context length of <code>2048</code> tokens (except for the newest models, which support <code>4096</code>)</dd>
-    </dl>
-    <h3>Outputs</h3>
-    <ol class="node-ports">
         <dl class="message-properties">
-            <dt>msg.payload <span class="property-type">string</span></dt>
-            <dd>The output of the selected model based on the input prompt.</dd>
-            <dt>msg.full <span class="property-type">object</span></dt>
-            <dd>The full response object of the selected model.</dd>
-            <dt>msg.history <span class="property-type">array</span></dt>
-            <dd>The conversation history.</dd>
+            <dt>msg.payload
+                <span class="property-type">string</span>
+            </dt>
+            <dd> The prompt to input into the model. </dd>
+            
+            <dt class="optional">msg.topic
+                <span class="property-type">string</span>
+            </dt>
+            <dd> The topic and node behavior to select.</dd>
+            
+            <dt class="optional">msg.size
+                <span class="property-type">string</span>
+            </dt>
+            <dd> The desired image dimensions.</dd>
+            
+            <dt class="optional">msg.format
+                <span class="property-type">string</span>
+            </dt>
+            <dd> The desired image output format.</dd>
+            
+            <dt class="optional">msg.last
+                <span class="property-type">string</span>
+            </dt>
+            <dd> The input to be edited.</dd>
+            
+            <dt class="optional">msg.suffix
+                <span class="property-type">string</span>
+            </dt>
+            <dd> The suffix that comes after a completion of inserted text.</dd>
+            
+            <dt class="optional">msg.history
+                <span class="property-type">array</span>
+            </dt>
+            <dd> The conversation history.</dd> 
+            
+            <dt class="optional">msg.n
+                <span class="property-type">number | string</span>
+            </dt>
+            <dd> The number of responses desired.</dd>
+            
+            <dt class="optional">msg.temperature
+                <span class="property-type">number | string</span>
+            </dt>
+            <dd> The sampling temperature to use, between <code>0</code> and <code>2</code>. Higher values like <code>0.8</code> will make the output more random, while lower values like <code>0.2</code> will make it more focused and deterministic.</dd>
+            
+            <dt class="optional">msg.top_p
+                <span class="property-type">number | string</span>
+            </dt>
+            <dd> An alternative to sampling with temperature.</dd>
+            
+            <dt class="optional">msg.presence_penalty
+                <span class="property-type">number | string</span>
+            </dt>
+            <dd> Number between <code>-2.0</code> and <code>2.0</code>. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.</dd>
+            
+            <dt class="optional">msg.frequency_penalty
+                <span class="property-type">number | string</span>
+            </dt>
+            <dd> Number between <code>-2.0</code> and <code>2.0</code>. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.</dd>
+            
+            <dt class="optional">msg.max_tokens
+                <span class="property-type">number | string</span>
+            </dt>
+            <dd> The token count of your prompt plus <code>max_tokens</code> cannot exceed the model's context length. Most models have a context length of <code>2048</code> tokens (except for the newest models, which support <code>4096</code>)</dd>
+            
+            <dt class="optional">msg.echo
+                <span class="property-type">boolean</span>
+            </dt>
+            <dd> Echo back the prompt in addition to the completion when set to <code>true</code>.</dd>
         </dl>
-    </ol>
+    
+    <h3>Outputs</h3>
+        <ol class="node-ports">
+            <dl class="message-properties">
+                <dt>msg.payload <span class="property-type">string</span></dt>
+                <dd>The output of the selected model based on the input prompt.</dd>
+                
+                <dt>msg.full <span class="property-type">object</span></dt>
+                <dd>The full response object of the selected model.</dd>
+                
+                <dt>msg.history <span class="property-type">array</span></dt>
+                <dd>The conversation history.</dd>
+            </dl>
+        </ol>
+    
     <h3>Details</h3>
-    <p>Select the node's behavior by setting the Topic property value to <code>completion</code>, <code>edit</code>, <code>image</code>, <code>turbo</code>, or <code>gpt4</code>.</p>
-    <p>Alternatively you can set the Topic to <code>read from msg.topic</code> to set the behavior dynamically with incoming messages.</p>
-    <p>1. When <code>msg.topic</code> is set to <code>completion</code>:</p>
-    <p>Required <code>msg.payload</code> should be a well-written prompt that provides enough information for the model to know what you want and how it should respond. Its success generally depends on the complexity of the task and quality of your prompt. A good rule of thumb is to think about how you would write a word problem for a middle schooler to solve.</p>
-    <p>2. When <code>msg.topic</code> is set to <code>image</code>:</p>
-    <p>Required <code>msg.payload</code> should be a prompt of text description of the desired image.</p>
-    <p>Optional <code>msg.size</code> should be a string of the desired image dimensions. [Default:<code>256x256</code>]</p>
-    <p>Optional <code>msg.format</code> should be a string of either <code>b64_json</code> or <code>url</code>. [Default:<code>b64_json</code>]</p>
-    <p>3. When <code>msg.topic</code> is set to <code>edit</code>:</p>
-    <p>Required <code>msg.payload</code> should be a prompt of text to use as a starting point for the edit.</p>
-    <p>Required <code>msg.last</code> should be a string of text to use as the input to be edited.</p>
-    <p>4. When <code>msg.topic</code> is set to <code>turbo</code>:</p>
-    <p>Required <code>msg.payload</code> should be a well-written prompt.</p>
-    <p>Optional <code>msg.history</code> should be an array of objects containing the conversation history. [Default:<code>[]</code>]</p>
-    <p>5. When <code>msg.topic</code> is set to <code>gpt4</code>:</p>
-    <p>Required <code>msg.payload</code> should be a well-written prompt.</p>
-    <p>Optional <code>msg.history</code> should be an array of objects containing the conversation history. [Default:<code>[]</code>]</p>
+        <p>Select the node's behavior by setting the Topic property value to <code>completion</code>, <code>edit</code>, <code>image</code>, <code>turbo</code>, or <code>gpt4</code>.</p>
+        
+        <p>Alternatively you can set the Topic to <code>read from msg.topic</code> to set the behavior dynamically with incoming messages.</p>
+        
+        <p>1. When <code>msg.topic</code> is set to <code>completion</code>:</p>
+        <p>Required <code>msg.payload</code> should be a well-written prompt that provides enough information for the model to know what you want and how it should respond. Its success generally depends on the complexity of the task and quality of your prompt. A good rule of thumb is to think about how you would write a word problem for a middle schooler to solve.</p>
+        
+        <p>2. When <code>msg.topic</code> is set to <code>image</code>:</p>
+        <p>Required <code>msg.payload</code> should be a prompt of text description of the desired image.</p>
+        <p>Optional <code>msg.size</code> should be a string of the desired image dimensions. [Default:<code>256x256</code>]</p>
+        <p>Optional <code>msg.format</code> should be a string of either <code>b64_json</code> or <code>url</code>. [Default:<code>b64_json</code>]</p>
+        
+        <p>3. When <code>msg.topic</code> is set to <code>edit</code>:</p>
+        <p>Required <code>msg.payload</code> should be a prompt of text to use as a starting point for the edit.</p>
+        <p>Required <code>msg.last</code> should be a string of text to use as the input to be edited.</p>
+        
+        <p>4. When <code>msg.topic</code> is set to <code>turbo</code>:</p>
+        <p>Required <code>msg.payload</code> should be a well-written prompt.</p>
+        <p>Optional <code>msg.history</code> should be an array of objects containing the conversation history. [Default:<code>[]</code>]</p>
+        
+        <p>5. When <code>msg.topic</code> is set to <code>gpt4</code>:</p>
+        <p>Required <code>msg.payload</code> should be a well-written prompt.</p>
+        <p>Optional <code>msg.history</code> should be an array of objects containing the conversation history. [Default:<code>[]</code>]</p>
+    
+    <h3>Links</h3>
+        <ul>
+            <li><a href="https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt">GitHub</a> - this node's GitHub repository.</li>
+            <li><a href="https://flows.nodered.org/node/node-red-contrib-custom-chatgpt">NodeRED</a> - this node's page in the flow library.</li>
+            <li><a href="https://www.npmjs.com/package/node-red-contrib-custom-chatgpt">NPM</a> - this node's NPM page.</li>
+        </ul>
+        
  </script>

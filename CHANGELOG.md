@@ -1,6 +1,12 @@
 
 # Change Log
 
+## [1.2.8] - 2023-03-29
+
+### Changed
+
+- Updated help information displayed in the info tab of the editor. (improved formatting and documentation)
+
 ## [1.2.7] - 2023-03-29
 
 ### Changed
