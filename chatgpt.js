@@ -3,7 +3,7 @@ module.exports = (RED) => {
         Configuration,
         OpenAIApi
     } = require("openai");
-    const ACCEPT_TOPIC_LIST = ["completion", "image", "edit", "turbo", "gpt4"];
+    const ACCEPT_TOPIC_LIST = ["completion", "image", "edit", "turbo", "gpt4"].map(item => item.toLowerCase());
     const main = function (config) {
         const node = this;
         RED.nodes.createNode(node, config);
@@ -24,13 +24,16 @@ module.exports = (RED) => {
             if (config.topic != "__EMPTY__") {
                 msg.topic = config.topic;
             };
-            if ((msg.topic != "completion") && (msg.topic != "image") && (msg.topic != "edit") && (msg.topic != "turbo") && (msg.topic != "gpt4") && (msg.topic != "__EMPTY__")) {
+            if (msg.topic) {
+                msg.topic.toLowerCase();
+            };
+            if (!ACCEPT_TOPIC_LIST.includes(msg.topic) && msg.topic !== "__empty__") {
                 node.status({
                     fill: "red",
                     shape: "dot",
                     text: "msg.topic is incorrect"
                 });
-                node.error(`msg.topic must be one of ${ACCEPT_TOPIC_LIST.map(item => ` '${item}' `).join(", ")}`)
+                node.error(`msg.topic must be a string set to one of the following values: ${ACCEPT_TOPIC_LIST.map(item => `'${item}'`).join(", ")}`)
                 node.send(msg)
             } else if (msg.topic === "image") {
                 try {

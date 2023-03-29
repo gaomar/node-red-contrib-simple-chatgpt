@@ -1,6 +1,18 @@
 
 # Change Log
 
+## [1.2.5] - 2023-03-29
+
+### Added
+
+- Included support for using case insensitive topics input with the `msg.topic` property.
+
+### Changed
+
+- Updated help information displayed in the info tab of the editor. (less verbose "details" section)
+- Updated error message and removed unnecessary whitespace.
+- Updated `README.md` formating and usage information.
+
 ## [1.2.4] - 2023-03-28
 
 ### Added
@@ -9,8 +21,8 @@
 
 ### Changed
 
-- Updated help information displayed in the info tab of the editor (`msg.max_tokens` support is now documented)
-- Updated the included example to demonstrate new features
+- Updated help information displayed in the info tab of the editor. (`msg.max_tokens` support is now documented)
+- Updated the included example to demonstrate new features.
 
 ## [1.2.3] - 2023-03-23
 
@@ -27,7 +39,7 @@
 
 ### Changed
 
-- Improved help information displayed in the info tab of the editor
+- Improved help information displayed in the info tab of the editor.
 
 ## [1.2.2] - 2023-03-10
 

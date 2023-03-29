@@ -5,7 +5,7 @@
 
 ## node-red-contrib-custom-chatgpt
 
-A Node-RED node that interacts with OpenAI machine learning models like "ChatGPT".
+A Node-RED node that interacts with OpenAI machine learning models to generate text and image outputs like "ChatGPT" and "DALL·E 2".
 
 ### Quick Start
 
@@ -26,43 +26,37 @@ To get your `Organization` visit https://platform.openai.com/account/org-setting
 
 Once set-up the node can be controlled with as little as a single required message property `msg.payload`.
 
-### Alternatively you can set the Topic to `read from msg.topic` to set the behavior dynamically with incoming messages, by setting `msg.topic` to a string with the value of `completion`, `image`, `edit`, `turbo` , or `gpt4`.
+### Alternatively you can set the Topic to `read from msg.topic` to set the behavior dynamically with incoming messages.
 
-### 1. If `msg.topic` is set to `completion`:
+1. When `msg.topic` is set to `completion`:
 
-[Required] `msg.payload` should be a well-written prompt that provides enough information for the model to know what you want and how it should respond.
+   - [Required] `msg.payload` should be a well-written prompt that provides enough information for the model to know what you want and how it should respond. Its success generally depends on the complexity of the task and quality of your prompt. A good rule of thumb is to think about how you would write a word problem for a middle schooler to solve.
 
-Its success generally depends on the complexity of the task and quality of your prompt. A good rule of thumb is to think about how you would write a word problem for a middle schooler to solve.
+2. When `msg.topic` is set to `image`:
 
-### 2. If `msg.topic` is set to `image`:
+   - [Required] `msg.payload` should be a prompt of text description of the desired image.
 
-[Required] `msg.payload` should be a prompt of text description of the desired image.
+   - [Optional] `msg.size` should be a string of the desired image dimensions. [Default:`256x256`]
 
-[Optional] `msg.size` should be a string of the desired image dimensions. [Default:`256x256`]
+   - [Optional] `msg.format` should be a string of either `b64_json` or `url`. [Default:`b64_json`]
 
-[Optional] `msg.format` should be a string of either `b64_json` or `url`. [Default:`b64_json`]
+3. When `msg.topic` is set to `edit`:
 
-### 3. If `msg.topic` is set to `edit`:
+   - [Required] `msg.payload` should be a prompt of text to use as a starting point for the edit.
 
-[Required] `msg.payload` should be a prompt of text to use as a starting point for the edit.
+   - [Required] `msg.last` should be a string of text to use as the input to be edited.
 
-[Required] `msg.last` should be a string of text to use as the input to be edited.
+4. When `msg.topic` is set to `turbo`:
 
-### 4. If `msg.topic` is set to `turbo`:
+   - [Required] `msg.payload` should be a well-written prompt that provides enough information for the model to know what you want and how it should respond. Its success generally depends on the complexity of the task and quality of your prompt.
 
-[Required] `msg.payload` should be a well-written prompt that provides enough information for the model to know what you want and how it should respond.
+   - [Optional] `msg.history` should be an array of objects containing the conversation history. [Default:`[]`]
 
-Its success generally depends on the complexity of the task and quality of your prompt.
+5. When `msg.topic` is set to `gpt4`:
 
-[Optional] `msg.history` should be an array of objects containing the conversation history. [Default:`[]`]
+   - [Required] `msg.payload` should be a well-written prompt that provides enough information for the model to know what you want and how it should respond. Its success generally depends on the complexity of the task and quality of your prompt.
 
-### 5. If `msg.topic` is set to `gpt4`:
-
-[Required] `msg.payload` should be a well-written prompt that provides enough information for the model to know what you want and how it should respond.
-
-Its success generally depends on the complexity of the task and quality of your prompt.
-
-[Optional] `msg.history` should be an array of objects containing the conversation history. [Default:`[]`]
+   - [Optional] `msg.history` should be an array of objects containing the conversation history. [Default:`[]`]
 
 
 #### Additional optional properties:
@@ -96,3 +90,7 @@ Please report any issues or feature requests at <a href="https://github.com/Haro
 ### Changelog
 
 View the full list of [changes](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/blob/main/CHANGELOG.md).
+
+## License
+
+[MIT License](LICENSE)
