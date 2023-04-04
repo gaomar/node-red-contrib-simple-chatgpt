@@ -7,6 +7,7 @@
             API_KEY: { value: "", required: true },
             Organization: { value: "", required: true },
             topic: { value: ""},
+            BaseUrl: { value: "https://api.openai.com" }
         },
         inputs:1,
         outputs:1,
@@ -56,6 +57,13 @@
             Topic
         </label>
         <input type="text" id="node-input-topic" />
+    </div>
+    <div class="form-row">
+        <label for="node-input-BaseUrl">
+            <i class="icon-tag"></i>
+            BaseUrl
+        </label>
+        <input type="text" id="node-input-BaseUrl" placeholder="https://api.openai.com">
     </div>
 </script>
 
