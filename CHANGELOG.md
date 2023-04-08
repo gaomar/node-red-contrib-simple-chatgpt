@@ -1,6 +1,12 @@
 
 # Change Log
 
+## [1.2.9] - 2023-04-08
+
+### Added
+
+- Included support for using a proxy to access the OpenAI API. Set the `BaseUrl` property value to the proxy/vpn service's url that you would like to use.
+
 ## [1.2.8] - 2023-03-29
 
 ### Changed
