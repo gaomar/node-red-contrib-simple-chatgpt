@@ -13,6 +13,21 @@ module.exports = (RED) => {
             organization: ORGANIZATION,
             apiKey: API_KEY,
         });
+        if (config.BaseUrl) {
+            try {
+                const url = new URL(config.BaseUrl);
+                if (url.pathname === '/') {
+                    url.pathname = '/v1';
+                }
+                configuration.basePath = url.toString();
+            } catch {
+                node.status({
+                    fill: "red",
+                    shape: "dot",
+                    text: `BaseUrl(${config.BaseUrl}) isn't a valid url`
+                });
+            }
+        }
         const openai = new OpenAIApi(configuration);
 
         node.on('input', async(msg) => {
@@ -240,6 +255,8 @@ module.exports = (RED) => {
                 }
             }
         });
+        // clear the node status(invalid option tips)
+        node.on('close', () => { node.status({}); });
     }
 
     RED.nodes.registerType("chatgpt", main);
