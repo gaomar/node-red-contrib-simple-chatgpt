@@ -5,7 +5,7 @@
 
 ### Added
 
-- Included additional example. `generate-node-red-nodes.json` demonstrates how to generate Node-RED nodes and import them directly into the editor automatically (proof of concept for Windows). OpenAI models will write the code for based on simple parameters.
+- Included additional example. `generate-node-red-nodes.json` demonstrates how to generate Node-RED nodes and import them directly into the editor automatically (proof of concept for Windows). OpenAI models will write the code for you based on simple parameters.
 
 ## [1.2.9] - 2023-04-08
 
