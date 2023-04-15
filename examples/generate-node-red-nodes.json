@@ -1,0 +1,1296 @@
+[
+    {
+        "id": "ae1a045cf8952634",
+        "type": "tab",
+        "label": "ChatGPT node generator",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "3f3293c32911f3f7",
+        "type": "group",
+        "z": "ae1a045cf8952634",
+        "name": "Nodes made by a ChatGPT node using the gpt-3.5-turbo model",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "f630892029b028d2",
+            "a09e569b9789dc12",
+            "21fc2e15bd33bce8",
+            "81254dacf9396b61",
+            "978ce20453aae444",
+            "29e4d3926399a441",
+            "afad379e638057f5",
+            "6b667bda6cbdf602",
+            "c47b95ff81fc1300",
+            "d0477f0a51f6b626"
+        ],
+        "x": 674,
+        "y": 239,
+        "w": 402,
+        "h": 582
+    },
+    {
+        "id": "744e87cdb668bb4c",
+        "type": "group",
+        "z": "ae1a045cf8952634",
+        "name": "Node generator templates",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "6bc47f07e248de42",
+            "ec86dcac7444de1a",
+            "13d16a4d5b63d77d",
+            "84e22af86754b25c",
+            "78fe5e7c8a5a98aa",
+            "709d2c17b86ff273",
+            "14ea77e760e4ffc0",
+            "63a2094f7ab1adb7",
+            "9e04c0a3117e3eed",
+            "0634c085abe40419",
+            "1347e312c3605c84",
+            "07983e9a009caca0",
+            "6bfc53cdf3840906",
+            "25694714eab84f1f",
+            "18716f79f626092a",
+            "c65722a64ea5c5a9",
+            "b12f08db05a4ef79",
+            "7d42a2fe2c17e881",
+            "29bf50db4c2fd003",
+            "7f458d55cc90c247",
+            "14c2821ee677af5b"
+        ],
+        "x": 14,
+        "y": 239,
+        "w": 572,
+        "h": 582
+    },
+    {
+        "id": "9a13ab3250919592",
+        "type": "group",
+        "z": "ae1a045cf8952634",
+        "name": "Auto-Importer Windows",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "d454ddf8c6febed0",
+            "5bb33e2726d7f97b",
+            "f39df16640521d62",
+            "141f3dd85e9ac7f4",
+            "5de72de4ac72c198",
+            "6022cb2397d03ff6",
+            "0701e61c80db9b1f",
+            "f5b7eedf0256651f",
+            "827283cf8de80f5f",
+            "95b39c14ee8685eb",
+            "c2587e5a46b3333a",
+            "65124013e31b5834",
+            "03c5690b02dd0e15",
+            "46680cd27426e28d"
+        ],
+        "x": 674,
+        "y": 19,
+        "w": 872,
+        "h": 202
+    },
+    {
+        "id": "1c90cadb8c31c64d",
+        "type": "junction",
+        "z": "ae1a045cf8952634",
+        "x": 620,
+        "y": 280,
+        "wires": [
+            [
+                "600be270c90b5449"
+            ]
+        ]
+    },
+    {
+        "id": "dc44f4146178e69c",
+        "type": "chatgpt",
+        "z": "ae1a045cf8952634",
+        "name": "",
+        "API_KEY": "",
+        "Organization": "",
+        "topic": "turbo",
+        "BaseUrl": "",
+        "x": 360,
+        "y": 100,
+        "wires": [
+            [
+                "fe47a79e8f60e54a"
+            ]
+        ]
+    },
+    {
+        "id": "a3fd3544e0714d81",
+        "type": "debug",
+        "z": "ae1a045cf8952634",
+        "name": "debug prompt inputs",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 400,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "6bc47f07e248de42",
+        "type": "template",
+        "z": "ae1a045cf8952634",
+        "g": "744e87cdb668bb4c",
+        "name": "switch node generator",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Respond only with valid JSON syntax for a single Node-RED \"switch\" node that can be imported into the Node-RED editor. Do not add any comments or explanations. The node should be configured to route messages based on the following rules: ```{{{payload}}}```",
+        "output": "str",
+        "x": 460,
+        "y": 500,
+        "wires": [
+            [
+                "1c90cadb8c31c64d"
+            ]
+        ]
+    },
+    {
+        "id": "ec86dcac7444de1a",
+        "type": "inject",
+        "z": "ae1a045cf8952634",
+        "g": "744e87cdb668bb4c",
+        "name": "8-way switch",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "contains \"wind\", contains \"holy\", contains \"fire\", contains \"ice\", contains \"earth\", contains \"lightning\", contains \"posion\", otherwise",
+        "payloadType": "str",
+        "x": 130,
+        "y": 480,
+        "wires": [
+            [
+                "63a2094f7ab1adb7"
+            ]
+        ]
+    },
+    {
+        "id": "fe47a79e8f60e54a",
+        "type": "switch",
+        "z": "ae1a045cf8952634",
+        "name": "gate",
+        "property": "gate",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 510,
+        "y": 100,
+        "wires": [
+            [
+                "65124013e31b5834"
+            ]
+        ]
+    },
+    {
+        "id": "600be270c90b5449",
+        "type": "change",
+        "z": "ae1a045cf8952634",
+        "name": "open gates",
+        "rules": [
+            {
+                "t": "set",
+                "p": "gate",
+                "pt": "flow",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 190,
+        "y": 100,
+        "wires": [
+            [
+                "a3fd3544e0714d81",
+                "dc44f4146178e69c"
+            ]
+        ]
+    },
+    {
+        "id": "13d16a4d5b63d77d",
+        "type": "inject",
+        "z": "ae1a045cf8952634",
+        "g": "744e87cdb668bb4c",
+        "name": "3-way switch",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "greater than or equals to 100, less than 100, else",
+        "payloadType": "str",
+        "x": 130,
+        "y": 520,
+        "wires": [
+            [
+                "63a2094f7ab1adb7"
+            ]
+        ]
+    },
+    {
+        "id": "84e22af86754b25c",
+        "type": "template",
+        "z": "ae1a045cf8952634",
+        "g": "744e87cdb668bb4c",
+        "name": "debug node generator",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Respond only with valid JSON syntax for a single Node-RED \"debug\" node that can be imported into the Node-RED editor. Do not add any comments or explanations. The node should be configured to: `{{{payload}}}`",
+        "output": "str",
+        "x": 460,
+        "y": 320,
+        "wires": [
+            [
+                "1c90cadb8c31c64d"
+            ]
+        ]
+    },
+    {
+        "id": "78fe5e7c8a5a98aa",
+        "type": "inject",
+        "z": "ae1a045cf8952634",
+        "g": "744e87cdb668bb4c",
+        "name": "debug",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "display the complete message object",
+        "payloadType": "str",
+        "x": 110,
+        "y": 320,
+        "wires": [
+            [
+                "84e22af86754b25c"
+            ]
+        ]
+    },
+    {
+        "id": "709d2c17b86ff273",
+        "type": "template",
+        "z": "ae1a045cf8952634",
+        "g": "744e87cdb668bb4c",
+        "name": "http request node generator",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Respond only with valid JSON syntax for a single Node-RED \"http request\" node that can be imported into the Node-RED editor. Do not add any comments or explanations. The node should be configured to: send a {{type}} request to {{url}}{{payload}}",
+        "output": "str",
+        "x": 440,
+        "y": 780,
+        "wires": [
+            [
+                "1c90cadb8c31c64d"
+            ]
+        ]
+    },
+    {
+        "id": "14ea77e760e4ffc0",
+        "type": "inject",
+        "z": "ae1a045cf8952634",
+        "g": "744e87cdb668bb4c",
+        "name": "http",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "type",
+                "v": "GET",
+                "vt": "str"
+            },
+            {
+                "p": "url",
+                "v": "reddit",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": " to view the front page",
+        "payloadType": "str",
+        "x": 110,
+        "y": 780,
+        "wires": [
+            [
+                "709d2c17b86ff273"
+            ]
+        ]
+    },
+    {
+        "id": "f630892029b028d2",
+        "type": "switch",
+        "z": "ae1a045cf8952634",
+        "g": "3f3293c32911f3f7",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "wind",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "holy",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "fire",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "ice",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "earth",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "lightning",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "poison",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 8,
+        "x": 750,
+        "y": 480,
+        "wires": [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "a09e569b9789dc12",
+        "type": "switch",
+        "z": "ae1a045cf8952634",
+        "g": "3f3293c32911f3f7",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "100",
+                "vt": "num"
+            },
+            {
+                "t": "lt",
+                "v": "100",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 750,
+        "y": 580,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "21fc2e15bd33bce8",
+        "type": "http request",
+        "z": "ae1a045cf8952634",
+        "g": "3f3293c32911f3f7",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://www.reddit.com/.json",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 770,
+        "y": 780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "63a2094f7ab1adb7",
+        "type": "string",
+        "z": "ae1a045cf8952634",
+        "g": "744e87cdb668bb4c",
+        "name": "sanitize",
+        "methods": [
+            {
+                "name": "replaceAll",
+                "params": [
+                    {
+                        "type": "str",
+                        "value": "otherwise"
+                    },
+                    {
+                        "type": "str",
+                        "value": "else"
+                    }
+                ]
+            }
+        ],
+        "prop": "payload",
+        "propout": "payload",
+        "object": "msg",
+        "objectout": "msg",
+        "x": 280,
+        "y": 500,
+        "wires": [
+            [
+                "6bc47f07e248de42"
+            ]
+        ]
+    },
+    {
+        "id": "9e04c0a3117e3eed",
+        "type": "template",
+        "z": "ae1a045cf8952634",
+        "g": "744e87cdb668bb4c",
+        "name": "inject node generator",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Respond only with valid JSON syntax for a single Node-RED \"inject\" node that can be imported into the Node-RED editor. Do not add any comments or explanations. The node should be configured to: send a message object with the following: {{{payload}}}",
+        "output": "str",
+        "x": 460,
+        "y": 280,
+        "wires": [
+            [
+                "1c90cadb8c31c64d"
+            ]
+        ]
+    },
+    {
+        "id": "0634c085abe40419",
+        "type": "inject",
+        "z": "ae1a045cf8952634",
+        "g": "744e87cdb668bb4c",
+        "name": "inject",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{ \"payload\": \"success\", \"topic\": \"turbo\" }",
+        "payloadType": "str",
+        "x": 110,
+        "y": 280,
+        "wires": [
+            [
+                "9e04c0a3117e3eed"
+            ]
+        ]
+    },
+    {
+        "id": "81254dacf9396b61",
+        "type": "inject",
+        "z": "ae1a045cf8952634",
+        "g": "3f3293c32911f3f7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "turbo",
+        "payload": "success",
+        "payloadType": "str",
+        "x": 790,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "978ce20453aae444",
+        "type": "debug",
+        "z": "ae1a045cf8952634",
+        "g": "3f3293c32911f3f7",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "1347e312c3605c84",
+        "type": "template",
+        "z": "ae1a045cf8952634",
+        "g": "744e87cdb668bb4c",
+        "name": "comment node generator",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Respond only with valid JSON syntax for a single Node-RED \"comment\" node named {{{name}}} that can be imported into the Node-RED editor. Do not add any additional comments or explanations. The node should contain the following info: ```{{{payload}}}```",
+        "output": "str",
+        "x": 450,
+        "y": 360,
+        "wires": [
+            [
+                "1c90cadb8c31c64d"
+            ]
+        ]
+    },
+    {
+        "id": "07983e9a009caca0",
+        "type": "function",
+        "z": "ae1a045cf8952634",
+        "g": "744e87cdb668bb4c",
+        "name": "sanitize",
+        "func": "const x = msg.timestamp;\nmsg.timestamp = new Date(x).toLocaleString();\nmsg.name = `\"${msg.name} ${msg.timestamp}\"`\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 360,
+        "wires": [
+            [
+                "1347e312c3605c84"
+            ]
+        ]
+    },
+    {
+        "id": "6bfc53cdf3840906",
+        "type": "inject",
+        "z": "ae1a045cf8952634",
+        "g": "744e87cdb668bb4c",
+        "name": "comment",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "name",
+                "v": "comment made on",
+                "vt": "str"
+            },
+            {
+                "p": "timestamp",
+                "v": "",
+                "vt": "date"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[\"success\",true]",
+        "payloadType": "str",
+        "x": 120,
+        "y": 360,
+        "wires": [
+            [
+                "07983e9a009caca0"
+            ]
+        ]
+    },
+    {
+        "id": "29e4d3926399a441",
+        "type": "comment",
+        "z": "ae1a045cf8952634",
+        "g": "3f3293c32911f3f7",
+        "name": "comment made on 3/30/2023, 9:59:50 PM",
+        "info": "[\"success\",true]",
+        "x": 860,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "25694714eab84f1f",
+        "type": "template",
+        "z": "ae1a045cf8952634",
+        "g": "744e87cdb668bb4c",
+        "name": "function node generator",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Respond only with valid JSON syntax for a single Node-RED \"function\" node that can be imported into the Node-RED editor. Do not add any additional comments or explanations. The node should contain the following JavaScript code: ```{{{payload}}}```",
+        "output": "str",
+        "x": 450,
+        "y": 400,
+        "wires": [
+            [
+                "1c90cadb8c31c64d"
+            ]
+        ]
+    },
+    {
+        "id": "18716f79f626092a",
+        "type": "inject",
+        "z": "ae1a045cf8952634",
+        "g": "744e87cdb668bb4c",
+        "name": "function",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "msg.payload = { \"result\": { \"success\": true }};msg.topic = \"Auto\";return msg;",
+        "payloadType": "str",
+        "x": 110,
+        "y": 400,
+        "wires": [
+            [
+                "25694714eab84f1f"
+            ]
+        ]
+    },
+    {
+        "id": "afad379e638057f5",
+        "type": "function",
+        "z": "ae1a045cf8952634",
+        "g": "3f3293c32911f3f7",
+        "name": "",
+        "func": "msg.payload = { \"result\": { \"success\": true }};\nmsg.topic = \"Auto\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c65722a64ea5c5a9",
+        "type": "template",
+        "z": "ae1a045cf8952634",
+        "g": "744e87cdb668bb4c",
+        "name": "change node generator",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Respond only with valid JSON syntax for a single Node-RED \"change\" node that can be imported into the Node-RED editor. Do not add any comments or explanations. The node should be configured based on the following rules: ```{{{payload}}}```",
+        "output": "str",
+        "x": 450,
+        "y": 640,
+        "wires": [
+            [
+                "1c90cadb8c31c64d"
+            ]
+        ]
+    },
+    {
+        "id": "b12f08db05a4ef79",
+        "type": "inject",
+        "z": "ae1a045cf8952634",
+        "g": "744e87cdb668bb4c",
+        "name": "change",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "set msg.element to \"fire\", set msg.topic to \"turbo\", move msg.payload to msg.saved",
+        "payloadType": "str",
+        "x": 110,
+        "y": 640,
+        "wires": [
+            [
+                "c65722a64ea5c5a9"
+            ]
+        ]
+    },
+    {
+        "id": "6b667bda6cbdf602",
+        "type": "change",
+        "z": "ae1a045cf8952634",
+        "g": "3f3293c32911f3f7",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "element",
+                "pt": "msg",
+                "to": "fire",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "turbo",
+                "tot": "str"
+            },
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "saved",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 780,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7d42a2fe2c17e881",
+        "type": "template",
+        "z": "ae1a045cf8952634",
+        "g": "744e87cdb668bb4c",
+        "name": "range node generator",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Respond only with valid JSON syntax for a single Node-RED \"range\" node that can be imported into the Node-RED editor. Do not add any comments or explanations. The node should be configured to map the input range {{{input}}} to the output range of {{{output}}}, round: {{{round}}}",
+        "output": "str",
+        "x": 460,
+        "y": 680,
+        "wires": [
+            [
+                "1c90cadb8c31c64d"
+            ]
+        ]
+    },
+    {
+        "id": "29bf50db4c2fd003",
+        "type": "inject",
+        "z": "ae1a045cf8952634",
+        "g": "744e87cdb668bb4c",
+        "name": "range",
+        "props": [
+            {
+                "p": "input",
+                "v": "0-20",
+                "vt": "str"
+            },
+            {
+                "p": "output",
+                "v": "0-100",
+                "vt": "str"
+            },
+            {
+                "p": "round",
+                "v": "true",
+                "vt": "bool"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 110,
+        "y": 680,
+        "wires": [
+            [
+                "7d42a2fe2c17e881"
+            ]
+        ]
+    },
+    {
+        "id": "c47b95ff81fc1300",
+        "type": "range",
+        "z": "ae1a045cf8952634",
+        "g": "3f3293c32911f3f7",
+        "minin": "0",
+        "maxin": "20",
+        "minout": "0",
+        "maxout": "100",
+        "action": "scale",
+        "round": true,
+        "property": "payload",
+        "name": "",
+        "x": 760,
+        "y": 680,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7f458d55cc90c247",
+        "type": "template",
+        "z": "ae1a045cf8952634",
+        "g": "744e87cdb668bb4c",
+        "name": "template node generator",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Respond only with valid JSON syntax for a single Node-RED \"template\" node that can be imported into the Node-RED editor. Do not add any comments or explanations. The node should be configured to format: {{format}}, output as {{output}}, with the payload: {{{payload}}}",
+        "output": "str",
+        "x": 450,
+        "y": 720,
+        "wires": [
+            [
+                "1c90cadb8c31c64d"
+            ]
+        ]
+    },
+    {
+        "id": "14c2821ee677af5b",
+        "type": "inject",
+        "z": "ae1a045cf8952634",
+        "g": "744e87cdb668bb4c",
+        "name": "template",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "format",
+                "v": "Mustache template",
+                "vt": "str"
+            },
+            {
+                "p": "output",
+                "v": "plain text",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Node {{name}} created successfully",
+        "payloadType": "str",
+        "x": 120,
+        "y": 720,
+        "wires": [
+            [
+                "7f458d55cc90c247"
+            ]
+        ]
+    },
+    {
+        "id": "d0477f0a51f6b626",
+        "type": "template",
+        "z": "ae1a045cf8952634",
+        "g": "3f3293c32911f3f7",
+        "name": "Success Message",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "mustache",
+        "syntax": "plain",
+        "template": "Node {{name}} created successfully",
+        "x": 790,
+        "y": 720,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d454ddf8c6febed0",
+        "type": "debug",
+        "z": "ae1a045cf8952634",
+        "g": "9a13ab3250919592",
+        "name": "debug clipboard",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1220,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "5bb33e2726d7f97b",
+        "type": "debug",
+        "z": "ae1a045cf8952634",
+        "g": "9a13ab3250919592",
+        "name": "debug import",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1210,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "f39df16640521d62",
+        "type": "switch",
+        "z": "ae1a045cf8952634",
+        "g": "9a13ab3250919592",
+        "name": "gate",
+        "property": "gate",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1030,
+        "y": 140,
+        "wires": [
+            [
+                "6022cb2397d03ff6"
+            ]
+        ]
+    },
+    {
+        "id": "141f3dd85e9ac7f4",
+        "type": "change",
+        "z": "ae1a045cf8952634",
+        "g": "9a13ab3250919592",
+        "name": "close gates",
+        "rules": [
+            {
+                "t": "set",
+                "p": "gate",
+                "pt": "flow",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1010,
+        "y": 60,
+        "wires": [
+            [
+                "5de72de4ac72c198"
+            ]
+        ]
+    },
+    {
+        "id": "5de72de4ac72c198",
+        "type": "debug",
+        "z": "ae1a045cf8952634",
+        "g": "9a13ab3250919592",
+        "name": "debug errors",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1210,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "6022cb2397d03ff6",
+        "type": "function",
+        "z": "ae1a045cf8952634",
+        "g": "9a13ab3250919592",
+        "name": "auto-import-from-clipboard",
+        "func": "return {\n    payload: `cmd.exe /c echo set WshShell = WScript.CreateObject(\"WScript.Shell\") > %temp%\\\\temp.vbs && echo WshShell.SendKeys \"^i\" >> %temp%\\\\temp.vbs && echo WScript.Sleep 250 >> %temp%\\\\temp.vbs && echo WshShell.SendKeys \"^v\" >> %temp%\\\\temp.vbs && echo WScript.Sleep 250 >> %temp%\\\\temp.vbs && echo WshShell.SendKeys \"{TAB}{TAB}{TAB}{TAB}{ENTER}\" >> %temp%\\\\temp.vbs && cscript //nologo %temp%\\\\temp.vbs && del %temp%\\\\temp.vbs`\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 960,
+        "y": 180,
+        "wires": [
+            [
+                "5bb33e2726d7f97b",
+                "0701e61c80db9b1f"
+            ]
+        ]
+    },
+    {
+        "id": "0701e61c80db9b1f",
+        "type": "exec",
+        "z": "ae1a045cf8952634",
+        "g": "9a13ab3250919592",
+        "command": "",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 1250,
+        "y": 140,
+        "wires": [
+            [
+                "95b39c14ee8685eb"
+            ],
+            [
+                "827283cf8de80f5f"
+            ],
+            [
+                "c2587e5a46b3333a"
+            ]
+        ]
+    },
+    {
+        "id": "f5b7eedf0256651f",
+        "type": "function",
+        "z": "ae1a045cf8952634",
+        "g": "9a13ab3250919592",
+        "name": "ctrl-c",
+        "func": "let clipboard = msg.payload;\nif (typeof clipboard === \"string\") {\n    return { payload: `echo ${clipboard}| clip` };\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1030,
+        "y": 100,
+        "wires": [
+            [
+                "d454ddf8c6febed0",
+                "0701e61c80db9b1f",
+                "46680cd27426e28d"
+            ]
+        ]
+    },
+    {
+        "id": "827283cf8de80f5f",
+        "type": "debug",
+        "z": "ae1a045cf8952634",
+        "g": "9a13ab3250919592",
+        "name": "stderr",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1410,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "95b39c14ee8685eb",
+        "type": "debug",
+        "z": "ae1a045cf8952634",
+        "g": "9a13ab3250919592",
+        "name": "stdout",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1410,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "c2587e5a46b3333a",
+        "type": "debug",
+        "z": "ae1a045cf8952634",
+        "g": "9a13ab3250919592",
+        "name": "return code",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1430,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "65124013e31b5834",
+        "type": "function",
+        "z": "ae1a045cf8952634",
+        "g": "9a13ab3250919592",
+        "name": "response sanitizer and formatter",
+        "func": "msg.payload = msg.payload.trim();\n\nif (msg.payload.startsWith(\"```\") === true) {\n    msg.payload = msg.payload.replace(/```/g, \"\").trim();\n}\n\nif (msg.payload.startsWith(\"json\") === true) {\n    msg.payload = msg.payload.replace(\"json\", \"\").trim();\n}\n\nif (msg.payload.endsWith(\"```\") === true) {\n    msg.payload = msg.payload.replace(/```/g, \"\").trim();\n}\n\nif (msg.payload.startsWith(\"[\") === false) {\n    msg.payload = `[${msg.payload}`;\n}\n\nif (msg.payload.endsWith(\"]\") === false) {\n    msg.payload = `${msg.payload}]`;\n}\nmsg.payload = msg.payload.replace(/[\\n]/g, '');\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 830,
+        "y": 100,
+        "wires": [
+            [
+                "f5b7eedf0256651f"
+            ]
+        ]
+    },
+    {
+        "id": "03c5690b02dd0e15",
+        "type": "catch",
+        "z": "ae1a045cf8952634",
+        "g": "9a13ab3250919592",
+        "name": "",
+        "scope": [
+            "0701e61c80db9b1f",
+            "dc44f4146178e69c"
+        ],
+        "uncaught": false,
+        "x": 750,
+        "y": 60,
+        "wires": [
+            [
+                "141f3dd85e9ac7f4"
+            ]
+        ]
+    },
+    {
+        "id": "46680cd27426e28d",
+        "type": "delay",
+        "z": "ae1a045cf8952634",
+        "g": "9a13ab3250919592",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "500",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 890,
+        "y": 140,
+        "wires": [
+            [
+                "f39df16640521d62"
+            ]
+        ]
+    }
+]
