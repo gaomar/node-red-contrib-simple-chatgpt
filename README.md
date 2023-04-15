@@ -77,6 +77,9 @@ The following optional inputs are supported - `msg.max_tokens`, `msg.suffix`, `m
 [New screenshot] Updated example using optional message properties and setting behavior `Topic` in node edit dialog.
 [<img src="/examples/example4.png">](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/blob/main/examples/chatgpt.json)
 
+[New screenshot] Additional example demonstrating how to generate Node-RED nodes and import them directly into the editor automatically.
+[<img src="/examples/example5.png">](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/blob/main/examples/generate-node-red-nodes.json)
+
 ## Links
 
 * [NodeRED](https://flows.nodered.org/node/node-red-contrib-custom-chatgpt)
