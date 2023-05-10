@@ -8,8 +8,6 @@
 - Include `msg` with errors, so that `catch` nodes can be used properly.
 - Updated the example `generate-node-red-nodes.json` to support Mac OS generating Node-RED nodes and importing them directly into the editor automatically.
 
-# Change Log
-
 ## [1.2.10] - 2023-04-14
 
 ### Added
