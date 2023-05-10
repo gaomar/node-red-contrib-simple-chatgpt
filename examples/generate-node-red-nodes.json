@@ -28,8 +28,8 @@
             "d0477f0a51f6b626"
         ],
         "x": 674,
-        "y": 239,
-        "w": 402,
+        "y": 259,
+        "w": 408,
         "h": 582
     },
     {
@@ -48,7 +48,6 @@
             "78fe5e7c8a5a98aa",
             "709d2c17b86ff273",
             "14ea77e760e4ffc0",
-            "63a2094f7ab1adb7",
             "9e04c0a3117e3eed",
             "0634c085abe40419",
             "1347e312c3605c84",
@@ -63,16 +62,16 @@
             "7f458d55cc90c247",
             "14c2821ee677af5b"
         ],
-        "x": 14,
-        "y": 239,
-        "w": 572,
+        "x": 4,
+        "y": 259,
+        "w": 582,
         "h": 582
     },
     {
         "id": "9a13ab3250919592",
         "type": "group",
         "z": "ae1a045cf8952634",
-        "name": "Auto-Importer Windows",
+        "name": "Auto-Importer (Windows + Mac)",
         "style": {
             "label": true
         },
@@ -95,19 +94,15 @@
         "x": 674,
         "y": 19,
         "w": 872,
-        "h": 202
+        "h": 222
     },
     {
         "id": "1c90cadb8c31c64d",
         "type": "junction",
         "z": "ae1a045cf8952634",
-        "x": 620,
-        "y": 280,
-        "wires": [
-            [
-                "600be270c90b5449"
-            ]
-        ]
+        "x": 600,
+        "y": 300,
+        "wires": [["600be270c90b5449"]]
     },
     {
         "id": "dc44f4146178e69c",
@@ -120,11 +115,7 @@
         "BaseUrl": "",
         "x": 360,
         "y": 100,
-        "wires": [
-            [
-                "fe47a79e8f60e54a"
-            ]
-        ]
+        "wires": [["fe47a79e8f60e54a"]]
     },
     {
         "id": "a3fd3544e0714d81",
@@ -156,12 +147,8 @@
         "template": "Respond only with valid JSON syntax for a single Node-RED \"switch\" node that can be imported into the Node-RED editor. Do not add any comments or explanations. The node should be configured to route messages based on the following rules: ```{{{payload}}}```",
         "output": "str",
         "x": 460,
-        "y": 500,
-        "wires": [
-            [
-                "1c90cadb8c31c64d"
-            ]
-        ]
+        "y": 520,
+        "wires": [["1c90cadb8c31c64d"]]
     },
     {
         "id": "ec86dcac7444de1a",
@@ -182,12 +169,8 @@
         "payload": "contains \"wind\", contains \"holy\", contains \"fire\", contains \"ice\", contains \"earth\", contains \"lightning\", contains \"posion\", otherwise",
         "payloadType": "str",
         "x": 130,
-        "y": 480,
-        "wires": [
-            [
-                "63a2094f7ab1adb7"
-            ]
-        ]
+        "y": 500,
+        "wires": [["6bc47f07e248de42"]]
     },
     {
         "id": "fe47a79e8f60e54a",
@@ -206,11 +189,7 @@
         "outputs": 1,
         "x": 510,
         "y": 100,
-        "wires": [
-            [
-                "65124013e31b5834"
-            ]
-        ]
+        "wires": [["65124013e31b5834"]]
     },
     {
         "id": "600be270c90b5449",
@@ -233,12 +212,7 @@
         "reg": false,
         "x": 190,
         "y": 100,
-        "wires": [
-            [
-                "a3fd3544e0714d81",
-                "dc44f4146178e69c"
-            ]
-        ]
+        "wires": [["a3fd3544e0714d81", "dc44f4146178e69c"]]
     },
     {
         "id": "13d16a4d5b63d77d",
@@ -259,12 +233,8 @@
         "payload": "greater than or equals to 100, less than 100, else",
         "payloadType": "str",
         "x": 130,
-        "y": 520,
-        "wires": [
-            [
-                "63a2094f7ab1adb7"
-            ]
-        ]
+        "y": 540,
+        "wires": [["6bc47f07e248de42"]]
     },
     {
         "id": "84e22af86754b25c",
@@ -279,12 +249,8 @@
         "template": "Respond only with valid JSON syntax for a single Node-RED \"debug\" node that can be imported into the Node-RED editor. Do not add any comments or explanations. The node should be configured to: `{{{payload}}}`",
         "output": "str",
         "x": 460,
-        "y": 320,
-        "wires": [
-            [
-                "1c90cadb8c31c64d"
-            ]
-        ]
+        "y": 340,
+        "wires": [["1c90cadb8c31c64d"]]
     },
     {
         "id": "78fe5e7c8a5a98aa",
@@ -305,12 +271,8 @@
         "payload": "display the complete message object",
         "payloadType": "str",
         "x": 110,
-        "y": 320,
-        "wires": [
-            [
-                "84e22af86754b25c"
-            ]
-        ]
+        "y": 340,
+        "wires": [["84e22af86754b25c"]]
     },
     {
         "id": "709d2c17b86ff273",
@@ -325,12 +287,8 @@
         "template": "Respond only with valid JSON syntax for a single Node-RED \"http request\" node that can be imported into the Node-RED editor. Do not add any comments or explanations. The node should be configured to: send a {{type}} request to {{url}}{{payload}}",
         "output": "str",
         "x": 440,
-        "y": 780,
-        "wires": [
-            [
-                "1c90cadb8c31c64d"
-            ]
-        ]
+        "y": 800,
+        "wires": [["1c90cadb8c31c64d"]]
     },
     {
         "id": "14ea77e760e4ffc0",
@@ -361,12 +319,8 @@
         "payload": " to view the front page",
         "payloadType": "str",
         "x": 110,
-        "y": 780,
-        "wires": [
-            [
-                "709d2c17b86ff273"
-            ]
-        ]
+        "y": 800,
+        "wires": [["709d2c17b86ff273"]]
     },
     {
         "id": "f630892029b028d2",
@@ -420,17 +374,8 @@
         "repair": false,
         "outputs": 8,
         "x": 750,
-        "y": 480,
-        "wires": [
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            []
-        ]
+        "y": 500,
+        "wires": [[], [], [], [], [], [], [], []]
     },
     {
         "id": "a09e569b9789dc12",
@@ -459,12 +404,8 @@
         "repair": false,
         "outputs": 3,
         "x": 750,
-        "y": 580,
-        "wires": [
-            [],
-            [],
-            []
-        ]
+        "y": 600,
+        "wires": [[], [], []]
     },
     {
         "id": "21fc2e15bd33bce8",
@@ -483,43 +424,8 @@
         "senderr": false,
         "headers": [],
         "x": 770,
-        "y": 780,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "63a2094f7ab1adb7",
-        "type": "string",
-        "z": "ae1a045cf8952634",
-        "g": "744e87cdb668bb4c",
-        "name": "sanitize",
-        "methods": [
-            {
-                "name": "replaceAll",
-                "params": [
-                    {
-                        "type": "str",
-                        "value": "otherwise"
-                    },
-                    {
-                        "type": "str",
-                        "value": "else"
-                    }
-                ]
-            }
-        ],
-        "prop": "payload",
-        "propout": "payload",
-        "object": "msg",
-        "objectout": "msg",
-        "x": 280,
-        "y": 500,
-        "wires": [
-            [
-                "6bc47f07e248de42"
-            ]
-        ]
+        "y": 800,
+        "wires": [[]]
     },
     {
         "id": "9e04c0a3117e3eed",
@@ -531,15 +437,11 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "Respond only with valid JSON syntax for a single Node-RED \"inject\" node that can be imported into the Node-RED editor. Do not add any comments or explanations. The node should be configured to: send a message object with the following: {{{payload}}}",
+        "template": "Respond only with valid JSON syntax for a single Node-RED \"inject\" node that can be imported into the Node-RED editor. Do not add any comments or explanations. The node should be configured to: send a message object with the following: {{{payload}}}\n",
         "output": "str",
         "x": 460,
-        "y": 280,
-        "wires": [
-            [
-                "1c90cadb8c31c64d"
-            ]
-        ]
+        "y": 300,
+        "wires": [["1c90cadb8c31c64d"]]
     },
     {
         "id": "0634c085abe40419",
@@ -560,12 +462,8 @@
         "payload": "{ \"payload\": \"success\", \"topic\": \"turbo\" }",
         "payloadType": "str",
         "x": 110,
-        "y": 280,
-        "wires": [
-            [
-                "9e04c0a3117e3eed"
-            ]
-        ]
+        "y": 300,
+        "wires": [["9e04c0a3117e3eed"]]
     },
     {
         "id": "81254dacf9396b61",
@@ -590,10 +488,8 @@
         "payload": "success",
         "payloadType": "str",
         "x": 790,
-        "y": 280,
-        "wires": [
-            []
-        ]
+        "y": 300,
+        "wires": [[]]
     },
     {
         "id": "978ce20453aae444",
@@ -610,7 +506,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 750,
-        "y": 320,
+        "y": 340,
         "wires": []
     },
     {
@@ -626,12 +522,8 @@
         "template": "Respond only with valid JSON syntax for a single Node-RED \"comment\" node named {{{name}}} that can be imported into the Node-RED editor. Do not add any additional comments or explanations. The node should contain the following info: ```{{{payload}}}```",
         "output": "str",
         "x": 450,
-        "y": 360,
-        "wires": [
-            [
-                "1c90cadb8c31c64d"
-            ]
-        ]
+        "y": 380,
+        "wires": [["1c90cadb8c31c64d"]]
     },
     {
         "id": "07983e9a009caca0",
@@ -646,12 +538,8 @@
         "finalize": "",
         "libs": [],
         "x": 260,
-        "y": 360,
-        "wires": [
-            [
-                "1347e312c3605c84"
-            ]
-        ]
+        "y": 380,
+        "wires": [["1347e312c3605c84"]]
     },
     {
         "id": "6bfc53cdf3840906",
@@ -682,12 +570,8 @@
         "payload": "[\"success\",true]",
         "payloadType": "str",
         "x": 120,
-        "y": 360,
-        "wires": [
-            [
-                "07983e9a009caca0"
-            ]
-        ]
+        "y": 380,
+        "wires": [["07983e9a009caca0"]]
     },
     {
         "id": "29e4d3926399a441",
@@ -697,7 +581,7 @@
         "name": "comment made on 3/30/2023, 9:59:50 PM",
         "info": "[\"success\",true]",
         "x": 860,
-        "y": 360,
+        "y": 380,
         "wires": []
     },
     {
@@ -713,12 +597,8 @@
         "template": "Respond only with valid JSON syntax for a single Node-RED \"function\" node that can be imported into the Node-RED editor. Do not add any additional comments or explanations. The node should contain the following JavaScript code: ```{{{payload}}}```",
         "output": "str",
         "x": 450,
-        "y": 400,
-        "wires": [
-            [
-                "1c90cadb8c31c64d"
-            ]
-        ]
+        "y": 420,
+        "wires": [["1c90cadb8c31c64d"]]
     },
     {
         "id": "18716f79f626092a",
@@ -739,12 +619,8 @@
         "payload": "msg.payload = { \"result\": { \"success\": true }};msg.topic = \"Auto\";return msg;",
         "payloadType": "str",
         "x": 110,
-        "y": 400,
-        "wires": [
-            [
-                "25694714eab84f1f"
-            ]
-        ]
+        "y": 420,
+        "wires": [["25694714eab84f1f"]]
     },
     {
         "id": "afad379e638057f5",
@@ -759,10 +635,8 @@
         "finalize": "",
         "libs": [],
         "x": 760,
-        "y": 400,
-        "wires": [
-            []
-        ]
+        "y": 420,
+        "wires": [[]]
     },
     {
         "id": "c65722a64ea5c5a9",
@@ -777,12 +651,8 @@
         "template": "Respond only with valid JSON syntax for a single Node-RED \"change\" node that can be imported into the Node-RED editor. Do not add any comments or explanations. The node should be configured based on the following rules: ```{{{payload}}}```",
         "output": "str",
         "x": 450,
-        "y": 640,
-        "wires": [
-            [
-                "1c90cadb8c31c64d"
-            ]
-        ]
+        "y": 660,
+        "wires": [["1c90cadb8c31c64d"]]
     },
     {
         "id": "b12f08db05a4ef79",
@@ -803,12 +673,8 @@
         "payload": "set msg.element to \"fire\", set msg.topic to \"turbo\", move msg.payload to msg.saved",
         "payloadType": "str",
         "x": 110,
-        "y": 640,
-        "wires": [
-            [
-                "c65722a64ea5c5a9"
-            ]
-        ]
+        "y": 660,
+        "wires": [["c65722a64ea5c5a9"]]
     },
     {
         "id": "6b667bda6cbdf602",
@@ -845,10 +711,8 @@
         "to": "",
         "reg": false,
         "x": 780,
-        "y": 640,
-        "wires": [
-            []
-        ]
+        "y": 660,
+        "wires": [[]]
     },
     {
         "id": "7d42a2fe2c17e881",
@@ -863,12 +727,8 @@
         "template": "Respond only with valid JSON syntax for a single Node-RED \"range\" node that can be imported into the Node-RED editor. Do not add any comments or explanations. The node should be configured to map the input range {{{input}}} to the output range of {{{output}}}, round: {{{round}}}",
         "output": "str",
         "x": 460,
-        "y": 680,
-        "wires": [
-            [
-                "1c90cadb8c31c64d"
-            ]
-        ]
+        "y": 700,
+        "wires": [["1c90cadb8c31c64d"]]
     },
     {
         "id": "29bf50db4c2fd003",
@@ -899,12 +759,8 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 110,
-        "y": 680,
-        "wires": [
-            [
-                "7d42a2fe2c17e881"
-            ]
-        ]
+        "y": 700,
+        "wires": [["7d42a2fe2c17e881"]]
     },
     {
         "id": "c47b95ff81fc1300",
@@ -920,10 +776,8 @@
         "property": "payload",
         "name": "",
         "x": 760,
-        "y": 680,
-        "wires": [
-            []
-        ]
+        "y": 700,
+        "wires": [[]]
     },
     {
         "id": "7f458d55cc90c247",
@@ -938,12 +792,8 @@
         "template": "Respond only with valid JSON syntax for a single Node-RED \"template\" node that can be imported into the Node-RED editor. Do not add any comments or explanations. The node should be configured to format: {{format}}, output as {{output}}, with the payload: {{{payload}}}",
         "output": "str",
         "x": 450,
-        "y": 720,
-        "wires": [
-            [
-                "1c90cadb8c31c64d"
-            ]
-        ]
+        "y": 740,
+        "wires": [["1c90cadb8c31c64d"]]
     },
     {
         "id": "14c2821ee677af5b",
@@ -974,12 +824,8 @@
         "payload": "Node {{name}} created successfully",
         "payloadType": "str",
         "x": 120,
-        "y": 720,
-        "wires": [
-            [
-                "7f458d55cc90c247"
-            ]
-        ]
+        "y": 740,
+        "wires": [["7f458d55cc90c247"]]
     },
     {
         "id": "d0477f0a51f6b626",
@@ -993,10 +839,8 @@
         "syntax": "plain",
         "template": "Node {{name}} created successfully",
         "x": 790,
-        "y": 720,
-        "wires": [
-            []
-        ]
+        "y": 740,
+        "wires": [[]]
     },
     {
         "id": "d454ddf8c6febed0",
@@ -1030,8 +874,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1210,
-        "y": 180,
+        "x": 1220,
+        "y": 200,
         "wires": []
     },
     {
@@ -1052,11 +896,7 @@
         "outputs": 1,
         "x": 1030,
         "y": 140,
-        "wires": [
-            [
-                "6022cb2397d03ff6"
-            ]
-        ]
+        "wires": [["6022cb2397d03ff6"]]
     },
     {
         "id": "141f3dd85e9ac7f4",
@@ -1080,11 +920,7 @@
         "reg": false,
         "x": 1010,
         "y": 60,
-        "wires": [
-            [
-                "5de72de4ac72c198"
-            ]
-        ]
+        "wires": [["5de72de4ac72c198"]]
     },
     {
         "id": "5de72de4ac72c198",
@@ -1110,20 +946,20 @@
         "z": "ae1a045cf8952634",
         "g": "9a13ab3250919592",
         "name": "auto-import-from-clipboard",
-        "func": "return {\n    payload: `cmd.exe /c echo set WshShell = WScript.CreateObject(\"WScript.Shell\") > %temp%\\\\temp.vbs && echo WshShell.SendKeys \"^i\" >> %temp%\\\\temp.vbs && echo WScript.Sleep 250 >> %temp%\\\\temp.vbs && echo WshShell.SendKeys \"^v\" >> %temp%\\\\temp.vbs && echo WScript.Sleep 250 >> %temp%\\\\temp.vbs && echo WshShell.SendKeys \"{TAB}{TAB}{TAB}{TAB}{ENTER}\" >> %temp%\\\\temp.vbs && cscript //nologo %temp%\\\\temp.vbs && del %temp%\\\\temp.vbs`\n};",
+        "func": "switch (os.platform()){\n    case \"win32\":\n    return {\n        payload: `cmd.exe /c echo set WshShell = WScript.CreateObject(\"WScript.Shell\") > %temp%\\\\temp.vbs && echo WshShell.SendKeys \"^i\" >> %temp%\\\\temp.vbs && echo WScript.Sleep 250 >> %temp%\\\\temp.vbs && echo WshShell.SendKeys \"^v\" >> %temp%\\\\temp.vbs && echo WScript.Sleep 250 >> %temp%\\\\temp.vbs && echo WshShell.SendKeys \"{TAB}{TAB}{TAB}{TAB}{ENTER}\" >> %temp%\\\\temp.vbs && cscript //nologo %temp%\\\\temp.vbs && del %temp%\\\\temp.vbs`\n    };\n    case \"darwin\":\n    return {\n        payload: `osascript -e 'tell application \"System Events\" to keystroke \"i\" using {command down}' -e 'delay 0.25' -e 'tell application \"System Events\" to keystroke \"v\" using {command down}' -e 'delay 0.25' -e 'tell application \"System Events\" to keystroke tab' -e 'delay 0.25' -e 'tell application \"System Events\" to keystroke tab' -e 'delay 0.25' -e 'tell application \"System Events\" to keystroke tab' -e 'delay 0.25' -e 'tell application \"System Events\" to keystroke tab' -e 'delay 0.25' -e 'tell application \"System Events\" to keystroke return'`\n    };\n    default:\n        throw new Error(`unsupported platform ${os.platform()}. Consider porting with gpt and submitting a PR!`)   \n}",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "libs": [],
+        "libs": [
+            {
+                "var": "os",
+                "module": "os"
+            }
+        ],
         "x": 960,
         "y": 180,
-        "wires": [
-            [
-                "5bb33e2726d7f97b",
-                "0701e61c80db9b1f"
-            ]
-        ]
+        "wires": [["5bb33e2726d7f97b", "0701e61c80db9b1f"]]
     },
     {
         "id": "0701e61c80db9b1f",
@@ -1141,15 +977,9 @@
         "x": 1250,
         "y": 140,
         "wires": [
-            [
-                "95b39c14ee8685eb"
-            ],
-            [
-                "827283cf8de80f5f"
-            ],
-            [
-                "c2587e5a46b3333a"
-            ]
+            ["95b39c14ee8685eb"],
+            ["827283cf8de80f5f"],
+            ["c2587e5a46b3333a"]
         ]
     },
     {
@@ -1158,21 +988,20 @@
         "z": "ae1a045cf8952634",
         "g": "9a13ab3250919592",
         "name": "ctrl-c",
-        "func": "let clipboard = msg.payload;\nif (typeof clipboard === \"string\") {\n    return { payload: `echo ${clipboard}| clip` };\n};",
+        "func": "let clipboard = msg.payload;\n\nswitch (os.platform()) {\n    case \"win32\":\n        return {\n            payload: `echo ${clipboard} | clip`\n        };\n    case \"darwin\":\n        return {\n            payload: `echo '${clipboard}' | pbcopy`\n        };\n    default:\n        throw new Error(`unsupported platform ${os.platform()}. Consider porting with gpt and submitting a PR!`)\n}",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "libs": [],
+        "libs": [
+            {
+                "var": "os",
+                "module": "os"
+            }
+        ],
         "x": 1030,
         "y": 100,
-        "wires": [
-            [
-                "d454ddf8c6febed0",
-                "0701e61c80db9b1f",
-                "46680cd27426e28d"
-            ]
-        ]
+        "wires": [["d454ddf8c6febed0", "0701e61c80db9b1f", "46680cd27426e28d"]]
     },
     {
         "id": "827283cf8de80f5f",
@@ -1242,11 +1071,7 @@
         "libs": [],
         "x": 830,
         "y": 100,
-        "wires": [
-            [
-                "f5b7eedf0256651f"
-            ]
-        ]
+        "wires": [["f5b7eedf0256651f"]]
     },
     {
         "id": "03c5690b02dd0e15",
@@ -1255,17 +1080,15 @@
         "g": "9a13ab3250919592",
         "name": "",
         "scope": [
+            "dc44f4146178e69c",
             "0701e61c80db9b1f",
-            "dc44f4146178e69c"
+            "f5b7eedf0256651f",
+            "6022cb2397d03ff6"
         ],
         "uncaught": false,
         "x": 750,
         "y": 60,
-        "wires": [
-            [
-                "141f3dd85e9ac7f4"
-            ]
-        ]
+        "wires": [["141f3dd85e9ac7f4"]]
     },
     {
         "id": "46680cd27426e28d",
@@ -1287,10 +1110,6 @@
         "outputs": 1,
         "x": 890,
         "y": 140,
-        "wires": [
-            [
-                "f39df16640521d62"
-            ]
-        ]
+        "wires": [["f39df16640521d62"]]
     }
 ]
