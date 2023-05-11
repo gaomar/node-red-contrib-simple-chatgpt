@@ -1,0 +1,42 @@
+License Change Notice
+
+This project, node-red-contrib-chatgpt, has been updated to use the MIT license.
+
+Previous License
+-----------------
+
+This project was previously released under the Apache License, Version 2.0.
+
+New License
+-----------
+
+This project is now released under the MIT License. The full text of the MIT License can be found in the LICENSE file in the root directory of this repository.
+
+Reason for Change
+-----------------
+
+We have decided to change the license of this project from Apache to MIT for the following reasons:
+
+1. Greater Flexibility: The MIT license is a permissive license that allows anyone to use, modify, and distribute code without restriction. This can make it easier for others to use and contribute to the project.
+
+2. Increased Collaboration: The MIT license is widely used in the open source community, and many developers are already familiar with its terms. By switching to the MIT license, we hope to attract more contributors and encourage greater collaboration.
+
+3. Improved Compatibility: The MIT license is a simpler and more straightforward license than the Apache license. This can make it easier for our code to be used with other projects and libraries that use the MIT license.
+
+4. Reduced Legal Complexity: The Apache license includes additional requirements, such as patent protection and attribution notices, that can be complex and difficult to comply with. By switching to the MIT license, we can simplify the legal requirements for using and contributing to our project.
+
+5. Greater Permissiveness: The MIT license is one of the most permissive open source licenses available. By using the MIT license, we hope to signal to others that we value openness and collaboration and that we are committed to making our code available to as many people as possible.
+
+Impact on Contributors
+----------------------
+
+If you have contributed to this project under the Apache license, your contributions are still valued and appreciated. By continuing to contribute to this project, you are agreeing to release your contributions under the MIT license.
+
+If you do not wish to have your contributions released under the MIT license, please let us know and we will remove your contributions from this project.
+
+We would like to thank all of our contributors for their hard work and dedication to this project. We hope that this change will make it easier for everyone to use and contribute to our project.
+
+Contact Information
+-------------------
+
+If you have any questions or concerns about this license change, please contact us at HaroldPetersInskipp@gmail.com.
