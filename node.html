@@ -5,13 +5,31 @@
         defaults: {
             name: {value: ""},
             Token:{value: "", required:true},
+            Model:{value: ""},
             SystemSetting: {value: ""},
+            functions: {value: "", validate: RED.validators.typedInput("functionsType")},
+            functionsType: {value: "str"},
+            function_call: {value: "auto", validate: RED.validators.typedInput("function_callType")},
+            function_callType: {value: "str"},
+
         },
         inputs:1,
         outputs:1,
         icon: "arrow-in.png",
         label: function() {
             return this.name||"simple-chatgpt";
+        },
+        oneditprepare: function () {
+            $('#node-input-functions').typedInput({
+                default: 'msg',
+                typeField: $("#node-input-functionsType"),
+                types: ['msg', 'flow', 'global', 'str', 'json', 'jsonata']
+            });
+            $('#node-input-function_call').typedInput({
+                default: 'str',
+                typeField: $("#node-input-function_callType"),
+                types: ['msg', 'flow', 'global', 'str', 'json', 'jsonata']
+            });
         }
     });
  </script>
@@ -26,7 +44,14 @@
             <i class="icon-tag"></i>
             Token
         </label>
-        <input type="text" id="node-input-Token" placeholder="Token">
+        <input type="password" id="node-input-Token" placeholder="Token">
+    </div>
+    <div class="form-row">
+        <label for="node-input-Model">
+            <i class="icon-tag"></i>
+            Model
+        </label>
+        <input type="text" id="node-input-Model" placeholder="gpt-3.5-turbo">
     </div>
     <div class="form-row">
         <label for="node-input-SystemSetting">
@@ -34,6 +59,16 @@
             SystemSetting
         </label>
         <input type="text" id="node-input-SystemSetting" placeholder="SystemSetting">
+    </div>
+    <div class="form-row">
+        <label style="padding-top: 8px" for="node-input-functions"><i class="fa fa-ellipsis-h"></i> functions</label>
+        <input type="text" id="node-input-functions">
+        <input type="hidden" id="node-input-functionsType">
+    </div>
+    <div class="form-row">
+        <label style="padding-top: 8px" for="node-input-function_call"><i class="fa fa-ellipsis-h"></i> function_call</label>
+        <input type="text" id="node-input-function_call" placeholder="auto">
+        <input type="hidden" id="node-input-function_callType">
     </div>
  </script>
  
@@ -47,10 +82,16 @@
         <dd> ChatGPTに渡すメッセージ内容です。 </dd>
         <dt class="optional">Token <span class="property-type">string</span></dt>
         <dd> ChatGPTのトークンです。</dd>
+        <dt class="optional">Model <span class="property-type">string</span></dt>
+        <dd> ChatGPTのモデルです。<code>gpt-3.5-turbo</code>、<code>gpt-4</code>、<code>gpt-3.5-turbo-0613</code>などを使いたいモデルの名前を指定します。デフォルトは<code>gpt-3.5-turbo</code>です。</dd>
         <dt class="optional">SystemSetting <span class="property-type">string</span></dt>
         <dd> AIアシスタントの設定などを記述します。例えば、語尾に必ず「テヘペロ」とつけて等を指定することができます。</dd>
         <dt class="optional">pastMessages <span class="property-type">array</span></dt>
         <dd> 会話の履歴を渡します。会話を継続する際に必要です。</dd>
+        <dt class="optional">functions <span class="property-type">array</span></dt>
+        <dd> Function Callingの設定を行います。配列形式で<a href="https://openai.com/blog/function-calling-and-other-api-updates">こちら</a>の形式で渡してください。※gpt-3.5-turbo-0613以降で使えます。</dd>
+        <dt class="optional">function_call <span class="property-type">string | object</span></dt>
+        <dd> Function Callingで<code>auto</code>だと自動で呼ばれます。<code>none</code>だと呼ばれません。<code>{name: xxxxxx}</code>にすると指定したFunctionが実行されます。</dd>
     </dl>
     <h3>出力</h3>
     <dl class="message-properties">
@@ -60,5 +101,7 @@
         <dd> ChatGPTの返答メッセージが返ってきます </dd>
         <dt>pastMessages <span class="property-type">array</span></dt>
         <dd> 会話の履歴を返します。</dd>
-    </dl>    
+        <dt>payloadFunction<span class="property-type">object</span></dt>
+        <dd> Function Callingの値が返ってきます。Function名とJSONパース済みのargumentsが含まれます。</dd>
+    </dl>
  </script>

@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-simple-chatgpt",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Node-REDでChatGPTができます。",
   "main": "node.js",
   "node-red": {
@@ -20,8 +20,8 @@
     "node-red"
   ],
   "author": "gaomar",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "dependencies": {
-    "openai": "^3.2.1"
+    "openai": "^3.3.0"
   }
 }
