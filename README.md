@@ -1,32 +1,46 @@
-[![platform](https://img.shields.io/badge/platform-Node--RED-red)](https://nodered.org)
-[![npm](https://img.shields.io/npm/v/node-red-contrib-custom-chatgpt.svg)](https://www.npmjs.com/package/node-red-contrib-custom-chatgpt)
-[![downloads](https://img.shields.io/npm/dt/node-red-contrib-custom-chatgpt.svg)](https://www.npmjs.com/package/node-red-contrib-custom-chatgpt)
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/blob/main/LICENSE)
+# node-red-contrib-custom-chatgpt
 
-## node-red-contrib-custom-chatgpt
+![Platform](https://img.shields.io/badge/platform-Node--RED-red)
+![npm](https://img.shields.io/npm/v/node-red-contrib-custom-chatgpt.svg)
+![Downloads](https://img.shields.io/npm/dt/node-red-contrib-custom-chatgpt.svg)
+![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-A Node-RED node that interacts with OpenAI machine learning models to generate text and image outputs like "ChatGPT" and "DALL·E 2".
+Supercharge your Node-RED flows with AI! Seamlessly integrate with OpenAI's powerful models like GPT-4 and DALL·E 2, and unlock a world of creative possibilities. Create imaginative chatbots, automate content generation, or build AI-driven experiences. The power of AI is just a node away!
 
-### Quick Start
+## Table of Contents
 
-Install with the built in <b>Node-RED Palette manager</b> or using npm:
-```
+- [node-red-contrib-custom-chatgpt](#node-red-contrib-custom-chatgpt)
+  - [Table of Contents](#table-of-contents)
+  - [Getting Started](#getting-started)
+  - [Setup](#setup)
+  - [Usage](#usage)
+    - [Additional optional properties](#additional-optional-properties)
+  - [Examples](#examples)
+  - [External Links](#external-links)
+  - [Bugs and Feature Requests](#bugs-and-feature-requests)
+  - [Changelog](#changelog)
+  - [License](#license)
+
+## Getting Started
+
+To start using `node-red-contrib-custom-chatgpt`, you can install it through the built-in Node-RED Palette manager or using npm:
+
+```sh
 npm install node-red-contrib-custom-chatgpt
 ```
 
 ## Setup
 
-When editing the nodes properties, to get your `OPENAI_API_KEY` log in to [ChatGPT](https://chat.openai.com/chat) and then visit https://platform.openai.com/account/api-keys click "+ Create new secret key" then copy and paste the "API key" into the nodes `API_KEY` property value.
+- [Follow this guide to get your OpenAI API key](https://platform.openai.com/account/api-keys)
+- [Here's how to get your Organization ID](https://platform.openai.com/account/org-settings)
 
-To get your `Organization` visit https://platform.openai.com/account/org-settings then copy and paste the "OrganizationID" into the nodes `Organization` property value.
+With these, you're ready to configure your `node-red-contrib-custom-chatgpt` nodes.
 
 ## Usage
 
-### Select the node's behavior by setting the Topic property value to `completion`, `image`, `edit`, `turbo` , or `gpt4`.
+With `node-red-contrib-custom-chatgpt`, you have the power to select the behavior of the node by setting the Topic property value to `completion`, `image`, `edit`, `turbo` , or `gpt4`. You can control the node with a single required message property `msg.payload` or dynamically set the behavior with incoming messages using `read from msg.topic`.
 
-Once set-up the node can be controlled with as little as a single required message property `msg.payload`.
-
-### Alternatively you can set the Topic to `read from msg.topic` to set the behavior dynamically with incoming messages.
+For detailed information on the usage of these modes, please refer to the [OpenAI API documentation](https://beta.openai.com/docs/).
 
 1. When `msg.topic` is set to `completion`:
 
@@ -58,42 +72,47 @@ Once set-up the node can be controlled with as little as a single required messa
 
    - [Optional] `msg.history` should be an array of objects containing the conversation history. [Default:`[]`]
 
+   - [Optional] `msg.functions` should be an array of objects defining function behaviors for the model. Each object must contain a `name` and `behavior` property. [Default:`[]`]
 
-#### Additional optional properties:
+   - [Optional] `msg.function_call` should be a string or object that controls how the model responds to function calls. "none" means the model does not call a function and responds to the end-user. "auto" allows the model to decide. Specifying a particular function via `{"name":"my_function"}` forces the model to call that function. [Default:`none` if no functions, `auto` if functions are present]
 
-The following optional inputs are supported - `msg.max_tokens`, `msg.suffix`, `msg.n`, `msg.temperature`, `msg.top_p`, `msg.presence_penalty`, `msg.frequency_penalty`, and `msg.echo`. See the nodes built in help tab for more information on how they are used.
+### Additional optional properties
 
-### Examples
+The following optional inputs are supported - `msg.max_tokens`, `msg.suffix`, `msg.n`, `msg.temperature`, `msg.top_p`, `msg.presence_penalty`, `msg.frequency_penalty`, and `msg.echo`. See the nodes built-in help tab for more information on how they are used.
+
+## Examples
+
+We've provided several examples to help you understand the potential and versatility of `node-red-contrib-custom-chatgpt`. From basic usages like image generation and text editing, to more advanced features like setting behaviors, using optional message properties, and automating Node-RED node creation.
 
 [Old screenshot] Basic usage for image, completion, and edit.
-[<img src="/examples/example.png">](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/blob/main/examples/chatgpt.json)
+[![Screenshot showcasing basic usage of node-red-contrib-custom-chatgpt for image generation, text completion, and text editing tasks](/examples/example.png)](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/blob/main/examples/chatgpt.json)
 
 [Old screenshot] More advanced usage with templates.
-[<img src="/examples/example2.png">](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/blob/main/examples/chatgpt.json)
+[![Screenshot illustrating advanced usage of node-red-contrib-custom-chatgpt with templates](/examples/example2.png)](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/blob/main/examples/chatgpt.json)
 
 [Old screenshot] Usage of model `gpt-3.5-turbo` and conversation history.
-[<img src="/examples/example3.png">](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/blob/main/examples/chatgpt.json)
+[![Screenshot demonstrating the usage of `gpt-3.5-turbo` model with conversation history in node-red-contrib-custom-chatgpt](/examples/example3.png)](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/blob/main/examples/chatgpt.json)
 
 [New screenshot] Updated example using optional message properties and setting behavior `Topic` in node edit dialog.
-[<img src="/examples/example4.png">](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/blob/main/examples/chatgpt.json)
+[![Screenshot of an updated example showing the use of optional message properties and setting behavior `Topic` in node edit dialog with node-red-contrib-custom-chatgpt](/examples/example4.png)](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/blob/main/examples/chatgpt.json)
 
 [New screenshot] Additional example demonstrating how to generate Node-RED nodes and import them directly into the editor automatically.
-[<img src="/examples/example5.png">](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/blob/main/examples/generate-node-red-nodes.json)
+[![Screenshot of an additional example demonstrating the generation of Node-RED nodes and their automatic import into the editor using node-red-contrib-custom-chatgpt](/examples/example5.png)](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/blob/main/examples/generate-node-red-nodes.json)
 
-## Links
+## External Links
 
-* [NodeRED](https://flows.nodered.org/node/node-red-contrib-custom-chatgpt)
-* [Libraries.io](https://libraries.io/npm/node-red-contrib-custom-chatgpt)
-* [npm](https://www.npmjs.com/package/node-red-contrib-custom-chatgpt)
+- [Node-RED](https://flows.nodered.org/node/node-red-contrib-custom-chatgpt)
+- [Libraries.io](https://libraries.io/npm/node-red-contrib-custom-chatgpt)
+- [npm](https://www.npmjs.com/package/node-red-contrib-custom-chatgpt)
 
-### Bugs reports and feature requests
+## Bugs and Feature Requests
 
-Please report any issues or feature requests at <a href="https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/issues">GitHub</a>.
+Encountered a bug or have an idea for a new feature? We'd love to hear from you! Feel free to [submit an issue](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/issues) on our GitHub page.
 
-### Changelog
+## Changelog
 
-View the full list of [changes](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/blob/main/CHANGELOG.md).
+Stay up-to-date with the latest changes by checking out our [CHANGELOG](https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt/blob/main/CHANGELOG.md).
 
 ## License
 
-[MIT License](LICENSE)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

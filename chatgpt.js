@@ -183,6 +183,16 @@ module.exports = (RED) => {
                         content: msg.payload,
                     };
                     msg.history.push(input);
+                    let function_call;
+                    if (msg.function_call) {
+                        function_call = msg.function_call;
+                    } else {
+                        if (msg.functions && msg.functions.length > 0) {
+                            function_call = "auto";
+                        } else {
+                            function_call = "none";
+                        }
+                    }
                     const response = await openai.createChatCompletion({
                         model: "gpt-4",
                         messages: msg.history,
@@ -194,6 +204,8 @@ module.exports = (RED) => {
                         max_tokens: parseInt(msg.max_tokens) || 4000,
                         presence_penalty: parseInt(msg.presence_penalty) || 0,
                         frequency_penalty: parseInt(msg.frequency_penalty) || 0,
+                        functions: msg.functions || null,
+                        function_call,
                     });
                     const trimmedContent =
                         response.data.choices[0].message.content.trim();
