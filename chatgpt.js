@@ -1,5 +1,11 @@
 module.exports = (RED) => {
-    const { Configuration, OpenAIApi } = require("openai");
+    // Import required modules
+    const {
+        Configuration,
+        OpenAIApi
+    } = require("openai");
+
+    // Define a list of acceptable topics for the node
     const ACCEPT_TOPIC_LIST = [
         "completion",
         "image",
@@ -7,23 +13,33 @@ module.exports = (RED) => {
         "turbo",
         "gpt4",
     ].map((item) => item.toLowerCase());
+
+    // Main function that gets executed when a message is received
     const main = function (config) {
         const node = this;
         RED.nodes.createNode(node, config);
+
+        // Extract API key and organization information from node configuration
         const API_KEY = config.API_KEY;
         const ORGANIZATION = config.Organization;
+
+        // Create OpenAI configuration with the provided API key and organization
         const configuration = new Configuration({
             organization: ORGANIZATION,
             apiKey: API_KEY,
         });
+
+        // Handle BaseUrl configuration if provided
         if (config.BaseUrl) {
             try {
+                // Update the base path if a valid URL is provided
                 const url = new URL(config.BaseUrl);
                 if (url.pathname === "/") {
                     url.pathname = "/v1";
                 }
                 configuration.basePath = url.toString();
             } catch {
+                // Display an error status if BaseUrl is not a valid URL
                 node.status({
                     fill: "red",
                     shape: "dot",
@@ -31,24 +47,32 @@ module.exports = (RED) => {
                 });
             }
         }
+
+        // Initialize the OpenAI API client
         const openai = new OpenAIApi(configuration);
 
-        node.on("input", async (msg) => {
+        // Handle incoming messages
+        node.on("input", async(msg) => {
+            // Set node status to indicate processing
             node.status({
                 fill: "green",
                 shape: "dot",
                 text: "Processing...",
             });
+
+            // Check and normalize the provided topic in the message
             if (config.topic != "__EMPTY__") {
                 msg.topic = config.topic;
             }
             if (msg.topic) {
                 msg.topic = msg.topic.toLowerCase();
             }
+
+            // Validate if the provided topic is in the accepted topic list
             if (
                 !ACCEPT_TOPIC_LIST.includes(msg.topic) &&
-                msg.topic !== "__empty__"
-            ) {
+                msg.topic !== "__empty__") {
+                // Set node status and log error if the topic is incorrect
                 node.status({
                     fill: "red",
                     shape: "dot",
@@ -59,29 +83,42 @@ module.exports = (RED) => {
                         (item) => `'${item}'`
                     ).join(", ")}`
                 );
+
+                // Send the message
                 node.send(msg);
             } else if (msg.topic === "image") {
+                // Process messages with the "image" topic
                 try {
+                    // Make a request to OpenAI API for image creation
                     const response = await openai.createImage({
                         prompt: msg.payload,
                         n: parseInt(msg.n) || 1,
                         size: msg.size || "256x256",
                         response_format: msg.format || "b64_json",
                     });
+
+                    // Process the response based on the specified format
                     if (msg.format === "url") {
                         msg.payload = response.data.data[0].url;
                     } else {
                         msg.payload = response.data.data[0].b64_json;
                     }
 
+                    // Set additional properties in the message
                     msg.full = response;
+
+                    // Set node status
                     node.status({
                         fill: "blue",
                         shape: "dot",
                         text: "Response complete",
                     });
+
+                    // Send the message
                     node.send(msg);
+                    // Handle errors
                 } catch (error) {
+                    // Set node status
                     node.status({
                         fill: "red",
                         shape: "dot",
@@ -95,7 +132,9 @@ module.exports = (RED) => {
                     }
                 }
             } else if (msg.topic === "edit") {
+                // Process messages with the "edit" topic
                 try {
+                    // Make a request to OpenAI API for edit topic
                     const response = await openai.createEdit({
                         model: "text-davinci-edit-001",
                         instruction: msg.payload,
@@ -104,15 +143,21 @@ module.exports = (RED) => {
                         temperature: parseInt(msg.temperature) || 1,
                         top_p: parseInt(msg.top_p) || 1,
                     });
+
+                    // Extract completed text from the response
                     msg.payload = response.data.choices[0].text;
                     msg.full = response;
+                    // Set node status
                     node.status({
                         fill: "blue",
                         shape: "dot",
                         text: "Response complete",
                     });
+                    // Send the message
                     node.send(msg);
+                    // Handle errors
                 } catch (error) {
+                    // Set node status
                     node.status({
                         fill: "red",
                         shape: "dot",
@@ -126,14 +171,17 @@ module.exports = (RED) => {
                     }
                 }
             } else if (msg.topic === "turbo") {
+                // Process messages with the "turbo" topic
                 try {
-                    if (typeof msg.history === "undefined") msg.history = [];
+                    if (typeof msg.history === "undefined")
+                        msg.history = [];
                     msg.topic = "turbo";
                     const input = {
                         role: "user",
                         content: msg.payload,
                     };
                     msg.history.push(input);
+                    // Request completion from gpt-3.5-turbo model
                     const response = await openai.createChatCompletion({
                         model: "gpt-3.5-turbo",
                         messages: msg.history,
@@ -153,15 +201,20 @@ module.exports = (RED) => {
                         content: trimmedContent,
                     };
                     msg.history.push(result);
+                    // Extract completed text from the response
                     msg.payload = response.data.choices[0].message.content;
                     msg.full = response;
+                    // Set node status
                     node.status({
                         fill: "blue",
                         shape: "dot",
                         text: "Response complete",
                     });
+                    // Send the message
                     node.send(msg);
+                    // Handle errors
                 } catch (error) {
+                    // Set node status
                     node.status({
                         fill: "red",
                         shape: "dot",
@@ -175,8 +228,11 @@ module.exports = (RED) => {
                     }
                 }
             } else if (msg.topic === "gpt4") {
+                // Process messages with the "gpt4" topic
                 try {
-                    if (typeof msg.history === "undefined") msg.history = [];
+                    // Handle GPT-4 conversation logic
+                    if (typeof msg.history === "undefined")
+                        msg.history = [];
                     msg.topic = "gpt4";
                     const input = {
                         role: "user",
@@ -193,6 +249,7 @@ module.exports = (RED) => {
                             function_call = "none";
                         }
                     }
+                    // Request completion from GPT-4 model
                     const response = await openai.createChatCompletion({
                         model: "gpt-4",
                         messages: msg.history,
@@ -214,15 +271,20 @@ module.exports = (RED) => {
                         content: trimmedContent,
                     };
                     msg.history.push(result);
+                    // Extract completed text from the response
                     msg.payload = response.data.choices[0].message.content;
                     msg.full = response;
+                    // Set node status
                     node.status({
                         fill: "blue",
                         shape: "dot",
                         text: "Response complete",
                     });
+                    // Send the message
                     node.send(msg);
+                    // Handle errors
                 } catch (error) {
+                    // Set node status
                     node.status({
                         fill: "red",
                         shape: "dot",
@@ -236,8 +298,10 @@ module.exports = (RED) => {
                     }
                 }
             } else {
+                // Default case for completion topic
                 try {
                     msg.topic = "completion";
+                    // Request completion from the default model
                     const response = await openai.createCompletion({
                         model: "text-davinci-003",
                         prompt: msg.payload,
@@ -254,15 +318,20 @@ module.exports = (RED) => {
                         frequency_penalty: parseInt(msg.frequency_penalty) || 0,
                         best_of: parseInt(msg.best_of) || 1,
                     });
+                    // Extract completed text from the response
                     msg.payload = response.data.choices[0].text;
                     msg.full = response;
+                    // Set node status
                     node.status({
                         fill: "blue",
                         shape: "dot",
                         text: "Response complete",
                     });
+                    // Send the message
                     node.send(msg);
+                    // Handle errors
                 } catch (error) {
+                    // Set node status
                     node.status({
                         fill: "red",
                         shape: "dot",
@@ -277,11 +346,12 @@ module.exports = (RED) => {
                 }
             }
         });
-        // clear the node status(invalid option tips)
+        // Clear the node status on node close
         node.on("close", () => {
             node.status({});
         });
     };
 
+    // Register the node type with Node-RED
     RED.nodes.registerType("chatgpt", main);
 };
