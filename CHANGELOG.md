@@ -1,6 +1,27 @@
 
 # Change Log
 
+## [1.2.14] - 2024-01-12
+
+### Changed
+
+- Remembered to update changelog.
+
+## [1.2.13] - 2024-01-12
+
+### Changed
+
+- Fixed formatting of help information displayed in the info tab of the editor.
+- Included comments in `chatgpt.js`.
+
+## [1.2.12] - 2023-11-07
+
+### Changed
+
+- Include function calling with GPT-4 model with the msg.functions property
+- Updated documentation
+
+
 ## [1.2.11] - 2023-05-10
 
 ### Changed
