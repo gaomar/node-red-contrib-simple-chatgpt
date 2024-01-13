@@ -4,10 +4,12 @@
         color: '#10A37F',
         defaults: {
             name: { value: "" },
-            API_KEY: { value: "", required: true },
-            Organization: { value: "", required: true },
             topic: { value: ""},
             BaseUrl: { value: "https://api.openai.com" }
+        },
+        credentials: {
+            API_KEY: {type:"text", required: true },
+            Organization: { type:"text", required: false },
         },
         inputs:1,
         outputs:1,

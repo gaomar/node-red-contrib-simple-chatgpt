@@ -1,6 +1,12 @@
 
 # Change Log
 
+## [1.2.15] - 2024-01-12
+
+### Changed
+
+- Properly store credentials so they don't accidentally get exported in a flow
+
 ## [1.2.14] - 2024-01-12
 
 ### Changed

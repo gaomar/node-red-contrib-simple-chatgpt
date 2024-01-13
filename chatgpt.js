@@ -19,9 +19,9 @@ module.exports = (RED) => {
         const node = this;
         RED.nodes.createNode(node, config);
 
-        // Extract API key and organization information from node configuration
-        const API_KEY = config.API_KEY;
-        const ORGANIZATION = config.Organization;
+        // Extract API key and organization information from credentials
+        const API_KEY = this.credentials.API_KEY;
+        const ORGANIZATION = this.credentials.Organization;
 
         // Create OpenAI configuration with the provided API key and organization
         const configuration = new Configuration({
@@ -353,5 +353,10 @@ module.exports = (RED) => {
     };
 
     // Register the node type with Node-RED
-    RED.nodes.registerType("chatgpt", main);
+    RED.nodes.registerType("chatgpt", main, {
+        credentials: {
+            API_KEY: {type:"text"},
+            Organization: { type:"text"},
+        },
+    });
 };
