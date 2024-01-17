@@ -19,40 +19,41 @@ module.exports = (RED) => {
         const node = this;
         RED.nodes.createNode(node, config);
 
-        // Extract API key and organization information from credentials
-        const API_KEY = this.credentials.API_KEY || msg.API_KEY;
-        const ORGANIZATION = this.credentials.Organization || msg.ORGANIZATION;
-
-        // Create OpenAI configuration with the provided API key and organization
-        const configuration = new Configuration({
-            organization: ORGANIZATION,
-            apiKey: API_KEY,
-        });
-
-        // Handle BaseUrl configuration if provided
-        if (config.BaseUrl) {
-            try {
-                // Update the base path if a valid URL is provided
-                const url = new URL(config.BaseUrl);
-                if (url.pathname === "/") {
-                    url.pathname = "/v1";
-                }
-                configuration.basePath = url.toString();
-            } catch {
-                // Display an error status if BaseUrl is not a valid URL
-                node.status({
-                    fill: "red",
-                    shape: "dot",
-                    text: `BaseUrl(${config.BaseUrl}) isn't a valid url`,
-                });
-            }
-        }
-
-        // Initialize the OpenAI API client
-        const openai = new OpenAIApi(configuration);
-
         // Handle incoming messages
         node.on("input", async(msg) => {
+
+            // Extract API key and organization information from credentials
+            const API_KEY = this.credentials.API_KEY || msg.API_KEY;
+            const ORGANIZATION = this.credentials.Organization || msg.ORGANIZATION;
+
+            // Create OpenAI configuration with the provided API key and organization
+            const configuration = new Configuration({
+                organization: ORGANIZATION,
+                apiKey: API_KEY,
+            });
+
+            // Handle BaseUrl configuration if provided
+            if (config.BaseUrl) {
+                try {
+                    // Update the base path if a valid URL is provided
+                    const url = new URL(config.BaseUrl);
+                    if (url.pathname === "/") {
+                        url.pathname = "/v1";
+                    }
+                    configuration.basePath = url.toString();
+                } catch {
+                    // Display an error status if BaseUrl is not a valid URL
+                    node.status({
+                        fill: "red",
+                        shape: "dot",
+                        text: `BaseUrl(${config.BaseUrl}) isn't a valid url`,
+                    });
+                }
+            }
+
+            // Initialize the OpenAI API client
+            const openai = new OpenAIApi(configuration);
+
             // Set node status to indicate processing
             node.status({
                 fill: "green",
@@ -80,9 +81,8 @@ module.exports = (RED) => {
                 });
                 node.error(
                     `msg.topic must be a string set to one of the following values: ${ACCEPT_TOPIC_LIST.map(
-                        (item) => `'${item}'`
-                    ).join(", ")}`
-                );
+                                            (item) => ` '${item}' `
+                    ).join(", ")}`);
 
                 // Send the message
                 node.send(msg);
@@ -239,7 +239,7 @@ module.exports = (RED) => {
                         content: msg.payload,
                     };
                     msg.history.push(input);
-                    
+
                     // Request completion from GPT-4 model
                     const response = await openai.createChatCompletion({
                         model: "gpt-4",
@@ -344,8 +344,12 @@ module.exports = (RED) => {
     // Register the node type with Node-RED
     RED.nodes.registerType("chatgpt", main, {
         credentials: {
-            API_KEY: {type:"text"},
-            Organization: { type:"text"},
+            API_KEY: {
+                type: "text"
+            },
+            Organization: {
+                type: "text"
+            },
         },
     });
 };

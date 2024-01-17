@@ -1,6 +1,12 @@
 
 # Change Log
 
+## [1.2.17] - 2024-01-17
+
+### Changed
+
+- Properly included support for message properties `msg.API_KEY` and `msg.ORGANIZATION`
+
 ## [1.2.16] - 2024-01-17
 
 ### Changed
