@@ -72,13 +72,9 @@ For detailed information on the usage of these modes, please refer to the [OpenA
 
    - [Optional] `msg.history` should be an array of objects containing the conversation history. [Default:`[]`]
 
-   - [Optional] `msg.functions` should be an array of objects defining function behaviors for the model. Each object must contain a `name` and `behavior` property. [Default:`[]`]
-
-   - [Optional] `msg.function_call` should be a string or object that controls how the model responds to function calls. "none" means the model does not call a function and responds to the end-user. "auto" allows the model to decide. Specifying a particular function via `{"name":"my_function"}` forces the model to call that function. [Default:`none` if no functions, `auto` if functions are present]
-
 ### Additional optional properties
 
-The following optional inputs are supported - `msg.max_tokens`, `msg.suffix`, `msg.n`, `msg.temperature`, `msg.top_p`, `msg.presence_penalty`, `msg.frequency_penalty`, and `msg.echo`. See the nodes built-in help tab for more information on how they are used.
+The following optional inputs are supported - `msg.max_tokens`, `msg.suffix`, `msg.n`, `msg.temperature`, `msg.top_p`, `msg.presence_penalty`, `msg.frequency_penalty`, `msg.echo`, `msg.API_KEY` and `msg.ORGANIZATION`. See the nodes built-in help tab for more information on how they are used.
 
 ## Examples
 

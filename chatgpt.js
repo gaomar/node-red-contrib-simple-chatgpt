@@ -20,8 +20,8 @@ module.exports = (RED) => {
         RED.nodes.createNode(node, config);
 
         // Extract API key and organization information from credentials
-        const API_KEY = this.credentials.API_KEY;
-        const ORGANIZATION = this.credentials.Organization;
+        const API_KEY = this.credentials.API_KEY || msg.API_KEY;
+        const ORGANIZATION = this.credentials.Organization || msg.ORGANIZATION;
 
         // Create OpenAI configuration with the provided API key and organization
         const configuration = new Configuration({
@@ -239,16 +239,7 @@ module.exports = (RED) => {
                         content: msg.payload,
                     };
                     msg.history.push(input);
-                    let function_call;
-                    if (msg.function_call) {
-                        function_call = msg.function_call;
-                    } else {
-                        if (msg.functions && msg.functions.length > 0) {
-                            function_call = "auto";
-                        } else {
-                            function_call = "none";
-                        }
-                    }
+                    
                     // Request completion from GPT-4 model
                     const response = await openai.createChatCompletion({
                         model: "gpt-4",
@@ -261,8 +252,6 @@ module.exports = (RED) => {
                         max_tokens: parseInt(msg.max_tokens) || 4000,
                         presence_penalty: parseInt(msg.presence_penalty) || 0,
                         frequency_penalty: parseInt(msg.frequency_penalty) || 0,
-                        functions: msg.functions || null,
-                        function_call,
                     });
                     const trimmedContent =
                         response.data.choices[0].message.content.trim();

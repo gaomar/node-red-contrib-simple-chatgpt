@@ -1,6 +1,13 @@
 
 # Change Log
 
+## [1.2.16] - 2024-01-17
+
+### Changed
+
+- Reverted function calling with GPT-4 model due to issues
+- Included support for message properties `msg.API_KEY` and `msg.ORGANIZATION`
+
 ## [1.2.15] - 2024-01-12
 
 ### Changed

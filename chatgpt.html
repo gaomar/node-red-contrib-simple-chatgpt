@@ -90,17 +90,7 @@
                 <span class="property-type">string</span>
             </dt>
             <dd> The topic and node behavior to select.</dd>
-            
-            <dt class="optional">msg.function
-                <span class="property-type">string</span>
-            </dt>
-            <dd> (GPT-4 only) The function to be used if specified.</dd>
-            
-            <dt class="optional">msg.function_call
-                <span class="property-type">string</span>
-            </dt>
-            <dd> (GPT-4 only) Whether to call the function automatically or not. Set to 'auto' if functions are present, 'none' if no functions are specified. [Default:`none` if no functions, `auto` if functions are present]</dd>
-            
+
             <dt class="optional">msg.size
                 <span class="property-type">string</span>
             </dt>
@@ -160,6 +150,16 @@
                 <span class="property-type">boolean</span>
             </dt>
             <dd> Echo back the prompt in addition to the completion when set to <code>true</code>.</dd>
+            
+            <dt class="optional">msg.API_KEY
+                <span class="property-type">string</span>
+            </dt>
+            <dd> The API key to be used if not specified in the node.</dd>
+            
+            <dt class="optional">msg.ORGANIZATION
+                <span class="property-type">string</span>
+            </dt>
+            <dd> The ORGANIZATION to be used if not specified in the node.</dd>
         </dl>
     
     <h3>Outputs</h3>
@@ -200,9 +200,7 @@
         <p>5. When <code>msg.topic</code> is set to <code>gpt4</code>:</p>
         <p>Required <code>msg.payload</code> should be a well-written prompt.</p>
         <p>Optional <code>msg.history</code> should be an array of objects containing the conversation history. [Default:<code>[]</code>]</p>
-        <p>Optional <code>msg.function</code> should contain the function to be used if specified. This parameter is only applicable when using GPT-4.</p>
-        <p>Optional <code>msg.function_call</code> should indicate whether to call the function automatically or not. It should be set to 'auto' if functions are present, and 'none' if no functions are specified. The default value is 'none' if no functions are specified, and 'auto' if functions are present. This parameter is only applicable when using GPT-4.</p>
-    
+
     <h3>Links</h3>
         <ul>
             <li><a href="https://github.com/HaroldPetersInskipp/node-red-contrib-chatgpt">GitHub</a> - this node's GitHub repository.</li>
